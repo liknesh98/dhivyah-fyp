@@ -44,26 +44,26 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
 
-        $credentials = $request->only($this->username(), 'password');
+        $credentials = $request->only($this->username(), 'password', 'role');
         $username    = $credentials[$this->username()];
         $password    = $credentials['password'];
-        $role        = $request->only('role') ;
+        $role        = $credentials['role'];
 
-        if ($role == 1)
-        {
-            $user = DB::table('students')->where($this->username(), $username)->first();
+        // if ($role == 1)
+        // {
+        //     $user = DB::table('students')->where($this->username(), $username)->first();
 
-        }
-        else if($role == 2 )
-        {
-            $user = DB::table('teachers')->where($this->username(), $username)->first();
+        // }
+        // else if($role == 2 )
+        // {
+        //     $user = DB::table('teachers')->where($this->username(), $username)->first();
 
-        }
-        else if ($role == 3)
-        {
-            $user = DB::table('admins')->where($this->username(), $username)->first();
+        // }
+        // else if ($role == 3)
+        // {
+        //     $user = DB::table('admins')->where($this->username(), $username)->first();
 
-        }
+        // }
 
 
         // if (Hash::check($password, optional($user)->password)){

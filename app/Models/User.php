@@ -21,9 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
-    protected $table = 'students';
+    // protected $table = 'users';
+    // protected $table = 'teachers';
+    // protected $table = 'admins';
 
     /**
      * The attributes that should be hidden for serialization.
