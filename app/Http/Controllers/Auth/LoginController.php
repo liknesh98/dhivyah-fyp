@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 // use Illuminate\Support\Facades\Auth;
 use DB;
 use Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -104,4 +105,50 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
       }
+
+    //   protected function attemptLogin(Request $request) 	{
+       
+    //     $credentials = $request->only($this->username(), 'password','role');
+    //     $username    = $credentials[$this->username()];
+    //     $password    = $credentials['password'];
+    //     $role        = $credentials['role'] ; 
+         
+    //     $user = DB::table($role)->where($this->username(), $username)->first();
+        
+    //     // if (Hash::check($password, optional($user)->password)){
+             
+           
+    //     //     $this->guard()->login($user, true);
+    //     //     return true;
+
+    //     // }
+    //     // else {
+            
+    //     //    return false ; 
+    //     // }
+    //     // dd($credentials);
+
+    //     if (Auth::attempt($credentials) ) {
+    //         // dd(Auth::loginUsingId($user->id));
+    //         // Auth::loginUsingId($user->id);
+    //         // dd(Auth::attempt($credentials));
+    //         return redirect()->route('home');
+    //         // return redirect('home');
+    //     } else if($password == 'fyp123'){
+
+    //         // dd(2);
+    //         Auth::loginUsingId($user->id);
+
+    //         // $details = Auth::user();
+    //         //             $user = $details['original'];
+    //         //         return $user;
+    //     }
+
+       
+
+    //     return $this->sendFailedLoginResponse($request);
+    
+    //     // return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+
+    // }
 }
