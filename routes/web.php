@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-use App\Http\Controllers\StudentAnnouncementController;
+use App\Http\Controllers\Students\StudentAnnouncementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
 
 
+
+// Students
+Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');

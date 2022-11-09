@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
 
-class StudentAnnouncementController extends Controller
+class AdminAnnouncementController extends Controller
 {
     /**
     * Display a listing of the resource.
@@ -16,7 +16,7 @@ class StudentAnnouncementController extends Controller
     {
         $announcements = Announcement::where('status', '=', '1')->orderBy('id')->get();
 
-        return view('student.announcements', compact('announcements'));
+        return view('admin.announcements', compact('announcements'));
     }
 
     /**
