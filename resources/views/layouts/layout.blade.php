@@ -77,6 +77,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('s_announcement') }}">
+                                <span data-feather="layers"></span>
+                                Announcement
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file"></span>
                                 Progress Report
