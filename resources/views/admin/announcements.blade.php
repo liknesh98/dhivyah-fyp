@@ -5,7 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
         <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+
+                @foreach ($announcements as $announcement)
+                <div class="card">
+                    <div >
+                        {{$announcement->name}}
+                    </div>
+                    <div>
+                        {{$announcement->desc}}
+                    </div>
+                </div>
+                @endforeach
+
+
+                    <form method="POST" action="{{ route('announcement_store') }}">
                         @csrf
 
                         <div class="row mb-3">

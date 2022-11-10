@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Auth;
 
 class AdminAnnouncementController extends Controller
 {
@@ -39,13 +41,17 @@ class AdminAnnouncementController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'address' => 'required',
+            'desc' => 'required',
         ]);
 
-        Company::create($request->post());
+        Announcement::create(array(
+            'name' => $request->post('name'),
+            'desc'  => $request->post('desc'),
+            'status' => 1,
+            'created_by' => Auth::user()->email,
+        ));
 
-        return redirect()->route('companies.index')->with('success','Company has been created successfully.');
+        return redirect()->route('a_announcement')->with('success','Announcement has been created successfully.');
     }
 
     /**

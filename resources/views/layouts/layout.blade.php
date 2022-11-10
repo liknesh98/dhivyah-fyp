@@ -51,6 +51,20 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+                    @if (Session :: has('success'))
+                        <div class = "alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert">&times</a>
+                        <strong>SUCCESS!</strong> &nbsp;&nbsp;{{Session:: get('success')}}
+                        </div>
+                    @endif
+
+                    @if (Session :: has('error'))
+                        <div class = "alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert">&times</a>
+                        <strong>ERROR!</strong> &nbsp;&nbsp;{{Session:: get('error')}}
+                        </div>
+                    @endif
+
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
                 <a class="nav-link px-3" href="logout">Sign out</a>
@@ -136,7 +150,7 @@
                             </a>
                         </h6>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('a_announcement') }}">
                                 <span data-feather="file-text"></span>
                                 Manage Announcement
                             </a>

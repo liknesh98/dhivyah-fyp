@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Students\StudentAnnouncementController;
+use App\Http\Controllers\Admin\AdminAnnouncementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,5 +31,6 @@ Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->
 
 
 
-// Students
-Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
+// Admin
+Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->name('a_announcement');
+Route::post('/announcement_store', [AdminAnnouncementController::class, 'store'])->name('announcement_store');
