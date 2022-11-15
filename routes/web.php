@@ -19,6 +19,9 @@ use App\Http\Controllers\Admin\AdminAnnouncementController;
 Route::get('/', function () {
     return view('welcome2');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 
 Auth::routes();
