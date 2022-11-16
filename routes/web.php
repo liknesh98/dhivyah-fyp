@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Students\StudentAnnouncementController;
+use App\Http\Controllers\Students\StudyMaterialController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,9 @@ use App\Http\Controllers\Admin\AdminAnnouncementController;
 Route::get('/', function () {
     return view('welcome2');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
 
 
 Auth::routes();
@@ -28,7 +32,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Students
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
-
+Route::get('/4material',     [StudyMaterialController::class, 'index'])->name('4material');
+Route::get('/5material', function () {
+    return view('student/study_5yrs');
+})->name('5material');
+Route::get('/6material', function () {
+    return view('student/study_6yrs');
+})->name('6material');
 
 
 // Admin
