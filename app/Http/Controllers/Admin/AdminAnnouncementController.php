@@ -55,45 +55,30 @@ class AdminAnnouncementController extends Controller
     }
 
     /**
-    * Display the specified resource.
-    *
-    * @param  \App\company  $company
-    * @return \Illuminate\Http\Response
-    */
-    public function show(Company $company)
-    {
-        return view('companies.show',compact('company'));
-    }
-
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\Company  $company
-    * @return \Illuminate\Http\Response
-    */
-    public function edit(Company $company)
-    {
-        return view('companies.edit',compact('company'));
-    }
-
-    /**
     * Update the specified resource in storage.
     *
     * @param  \Illuminate\Http\Request  $request
     * @param  \App\company  $company
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, Company $company)
+    public function update(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'address' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'address' => 'required',
+        // ]);
 
-        $company->fill($request->post())->save();
+        // $company->fill($request->post())->save();
+        $update_announcement = array(
+            'name' => $request->post('name'),
+            'desc'  => $request->post('desc'),
+        );
+        Announcement::where('id', $request->post('id'))
+    //   ->where('active', 1)
+      ->update($update_announcement);
 
-        return redirect()->route('companies.index')->with('success','Company Has Been updated successfully');
+        return redirect()->route('a_announcement')->with('success','Announcement has been Updated successfully');
     }
 
     /**
