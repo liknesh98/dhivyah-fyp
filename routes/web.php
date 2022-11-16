@@ -34,3 +34,4 @@ Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->
 // Admin
 Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->name('a_announcement');
 Route::post('/announcement_store', [AdminAnnouncementController::class, 'store'])->name('announcement_store');
+Route::get('/announcement_delete/{id}', [AdminAnnouncementController::class, 'delete'])->name('announcement_delete');

@@ -102,9 +102,11 @@ class AdminAnnouncementController extends Controller
     * @param  \App\Company  $company
     * @return \Illuminate\Http\Response
     */
-    public function destroy(Company $company)
+    // public function destroy(Company $company)
+    public function delete($id)
     {
-        $company->delete();
-        return redirect()->route('companies.index')->with('success','Company has been deleted successfully');
+        // $company->delete();
+        Announcement::destroy($id);
+        return redirect()->route('a_announcement')->with('success','Announcement has been deleted successfully');
     }
 }
