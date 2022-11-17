@@ -5,17 +5,26 @@
   <div class="border border-primary" style="margin-top: 20px; background-color: #a7040457;" >
     
     <div class="row" style="margin-left:20px;margin-top: 20px;;margin-bottom: 20px;">
-        <ul class="nav nav-pills" >
-          <li class="nav-item " style="margin-right: 15px; margin-left: 15px;">
-            <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('4material')}}">4 Year Old</a>
+      <ul class="nav nav-pills" >
+        <li class="nav-item " style="margin-right: 15px; margin-left: 15px;">
+          <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('4material')}}">Year 1 </a>
+        </li>
+        <li class="nav-item" style="margin-right: 15px; margin-left: 15px;">
+            <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('5material')}}">Year 2</a>
           </li>
           <li class="nav-item" style="margin-right: 15px; margin-left: 15px;">
-              <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('5material')}}">5 Year Old</a>
-            </li>
-            <li class="nav-item" style="margin-right: 15px; margin-left: 15px;">
-              <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('6material')}}">6 Year Old</a>
-            </li>
-          </ul>
+            <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('6material')}}">Year 3</a>
+          </li>
+          <li class="nav-item" style="margin-right: 15px; margin-left: 15px;">
+            <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('6material')}}">Year 4</a>
+          </li>
+          <li class="nav-item" style="margin-right: 15px; margin-left: 15px;">
+            <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('6material')}}">Year 5</a>
+          </li>
+          <li class="nav-item" style="margin-right: 15px; margin-left: 15px;">
+            <a style="padding-top:20px; padding-bottom:20px" class="nav-link active" aria-current="page" href="{{url('6material')}}">Year 6</a>
+          </li>
+        </ul>
 </div>
 
 
