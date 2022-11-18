@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Year extends Model
 {
     use HasFactory;
+    public $year; 
+    function __construct($year)
+    {
+        $this->year = $year; 
+    }
+
+    function getYear() {
+        $this->year ; 
+    }
 }
