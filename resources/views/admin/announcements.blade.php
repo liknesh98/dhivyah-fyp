@@ -20,6 +20,11 @@
                     <div>
                         {{$announcement->desc}}
                     </div>
+                        @if (isset($announcement->img_path))
+                    <div class="symbol symbol-45px me-5">
+                        <img src="{{url($announcement->img_path)}}" alt="Image"/>
+                    </div>
+                        @endif
                 </div>
                 @endforeach
 
@@ -61,7 +66,7 @@
 
                                 <!--begin::Modal body-->
                                 <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
-                                    <form method="POST" action="{{ route('announcement_store') }}">
+                                    <form method="POST" action="{{ route('announcement_store') }}" enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="row mb-3">
@@ -94,7 +99,8 @@
 
 
                                         <div class="row mb-3">
-                                            <label for="desc" class="col-md-4 col-form-label text-md-end">{{ __('Image Upload - Later') }}</label>
+                                            <label class="col-md-4 col-form-label text-md-end">{{ __('Image Upload') }}</label>
+                                            <input type="file" id="image_upload" name="image_upload">
                                         </div>
 
 

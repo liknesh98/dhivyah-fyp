@@ -44,12 +44,49 @@ class AdminAnnouncementController extends Controller
             'desc' => 'required',
         ]);
 
+        $file = $request->file('image_upload');
+
+        $current_date_time = \Carbon\Carbon::now()->toDateTimeString();
+        $temp_file_name = $current_date_time . $file->getClientOriginalName();
+        $new_file_name = str_replace(":","_",$temp_file_name);
+
+
+
+      $destinationPath = 'uploads';
+      $file->move($destinationPath, $new_file_name);
+      $file_path = $destinationPath . '/' . $new_file_name;
+
         Announcement::create(array(
             'name' => $request->post('name'),
             'desc'  => $request->post('desc'),
+            'img_path' => $file_path,
             'status' => 1,
             'created_by' => Auth::user()->email,
         ));
+
+
+
+
+    //   //Display File Name
+    //   echo 'File Name: '.$file->getClientOriginalName();
+    //   echo '<br>';
+
+    //   //Display File Extension
+    //   echo 'File Extension: '.$file->getClientOriginalExtension();
+    //   echo '<br>';
+
+    //   //Display File Real Path
+    //   echo 'File Real Path: '.$file->getRealPath();
+    //   echo '<br>';
+
+    //   //Display File Size
+    //   echo 'File Size: '.$file->getSize();
+    //   echo '<br>';
+
+    //   Display File Mime Type
+    //   echo 'File Mime Type: '.$file->getMimeType();
+
+      //Move Uploaded File
 
         return redirect()->route('a_announcement')->with('success','Announcement has been created successfully.');
     }
