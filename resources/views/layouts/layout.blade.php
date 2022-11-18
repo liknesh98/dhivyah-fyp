@@ -80,7 +80,7 @@
 
     <link href="style.css" rel="stylesheet">
    <!-- CSS only -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
    
 </head>
@@ -132,48 +132,98 @@
                                 Dashboard
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Study Material</a>
-                            <div class="dropdown-menu">
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Year 1</a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Science </a> 
-                                </div>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Year 2</a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Science </a> 
-                                </div>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Year 3</a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Science </a> 
-                                </div>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Year 4</a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Science </a> 
-                                </div>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Year 5</a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Science </a> 
-                                </div>
-                              </li>
-                              <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Year 6</a>
-                                <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="#">Science </a> 
-                                </div>
-                              </li>
-                            
-                            </div>
-                          </li>
+                        
+                        <li class="nav-item" id="studyMaterial">
+                           
+                                
+                                  
+                                    
+                                        <a class="nav-link " aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMain" aria-expanded="true" aria-controls="collapseMain">
+                                            <span data-feather="home"></span>
+                                            Study Material
+                                        </a>
+                                    
+                                
+                               
+                                <div id="collapseMain" class="accordion-collapse collapse show" aria-labelledby="headingMain" data-bs-parent="#accordionExample">
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="accordion-item">
+                                          <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                              Year 1
+                                            </button>
+                                          </h2>
+                                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                              <strong>Science</strong> 
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingTwo">
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                                Year 2
+                                              </button>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                                <strong>Science</strong> 
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingThree">
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                                Year 3
+                                              </button>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                                <strong>Science</strong> 
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingFour">
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                                Year 4
+                                              </button>
+                                            </h2>
+                                            <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                                <strong>Science</strong> 
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingFive">
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                                Year 5
+                                              </button>
+                                            </h2>
+                                            <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                                <strong>Science</strong> 
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingSix">
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                                                Year 6
+                                              </button>
+                                            </h2>
+                                            <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                                <strong>Science</strong> 
+                                              </div>
+                                            </div>
+                                          </div>
+                                      </div>
+                              </div>
+                        
+                            </li>
+                    
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('s_announcement') }}">
                                 <span data-feather="layers"></span>
@@ -275,7 +325,7 @@
             </main>
             <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-          
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>         
 </body>
 
 </html>
