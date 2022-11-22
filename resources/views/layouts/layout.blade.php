@@ -14,7 +14,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
 
-     
+
 
 
 
@@ -80,9 +80,9 @@
 
     <link href="style.css" rel="stylesheet">
    <!-- CSS only -->
-   
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-   
+
 </head>
 
 <body>
@@ -132,19 +132,19 @@
                                 Dashboard
                             </a>
                         </li>
-                        
+
                         <li class="nav-item" id="studyMaterial">
-                           
-                                
-                                  
-                                    
+
+
+
+
                                         <a class="nav-link " aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMain" aria-expanded="true" aria-controls="collapseMain">
                                             <span data-feather="home"></span>
                                             Study Material
                                         </a>
-                                    
-                                
-                               
+
+
+
                                 <div id="collapseMain" class="accordion-collapse collapse show" aria-labelledby="headingMain" data-bs-parent="#accordionExample">
                                     <div class="accordion" id="accordionExample">
                                         <div class="accordion-item">
@@ -155,7 +155,7 @@
                                           </h2>
                                           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                              <strong>Science</strong> 
+                                              <strong>Science</strong>
                                             </div>
                                           </div>
                                         </div>
@@ -167,7 +167,7 @@
                                             </h2>
                                             <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong> 
+                                                <strong>Science</strong>
                                               </div>
                                             </div>
                                           </div>
@@ -179,7 +179,7 @@
                                             </h2>
                                             <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong> 
+                                                <strong>Science</strong>
                                               </div>
                                             </div>
                                           </div>
@@ -191,7 +191,7 @@
                                             </h2>
                                             <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong> 
+                                                <strong>Science</strong>
                                               </div>
                                             </div>
                                           </div>
@@ -203,7 +203,7 @@
                                             </h2>
                                             <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong> 
+                                                <strong>Science</strong>
                                               </div>
                                             </div>
                                           </div>
@@ -215,15 +215,15 @@
                                             </h2>
                                             <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong> 
+                                                <strong>Science</strong>
                                               </div>
                                             </div>
                                           </div>
                                       </div>
                               </div>
-                        
+
                             </li>
-                    
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('s_announcement') }}">
                                 <span data-feather="layers"></span>
@@ -249,7 +249,7 @@
                             </a>
                         </li>
                     </ul>
-                 
+
                     @endif
 
 
@@ -291,6 +291,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('a_note') }}">
+                                <span data-feather="file-text"></span>
+                                Manage Notes
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Manage Student List
@@ -325,7 +331,7 @@
             </main>
             <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>         
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>
 
 </html>

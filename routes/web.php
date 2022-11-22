@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Students\StudentAnnouncementController;
 use App\Http\Controllers\Students\StudyMaterialController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
+use App\Http\Controllers\Admin\AdminNotesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +47,8 @@ Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->na
 Route::post('/announcement_store', [AdminAnnouncementController::class, 'store'])->name('announcement_store');
 Route::post('/announcement_update', [AdminAnnouncementController::class, 'update'])->name('announcement_update');
 Route::get('/announcement_delete/{id}', [AdminAnnouncementController::class, 'delete'])->name('announcement_delete');
+
+Route::get('/a_note', [AdminNotesController::class, 'index'])->name('a_note');
+Route::post('/note_store', [AdminNotesController::class, 'store'])->name('note_store');
+Route::post('/note_update', [AdminNotesController::class, 'update'])->name('note_update');
+Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('note_delete');
