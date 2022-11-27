@@ -33,15 +33,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Students
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
-Route::get('/4material',     [StudyMaterialController::class, 'index'])->name('4material');
-Route::get('/5material', function () {
-    return view('student/study_5yrs');
-})->name('5material');
-Route::get('/6material', function () {
-    return view('student/study_6yrs');
-})->name('6material');
-
-
+// Route::get('/student/notes/{year}', [StudentAnnouncementController::class, 'index'])->name('g_notes');
+Route::get('/student/study/{year}', [StudyMaterialController::class , 'index'])->name('g_study');
+Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes']);
 // Admin
 Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->name('a_announcement');
 Route::post('/announcement_store', [AdminAnnouncementController::class, 'store'])->name('announcement_store');

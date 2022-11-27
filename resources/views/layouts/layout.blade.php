@@ -12,7 +12,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet"> --}}
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
 
 
@@ -155,7 +155,7 @@
                                           </h2>
                                           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                              <strong>Science</strong>
+                                              <strong><a href="/student/study/1">Science</a></strong>
                                             </div>
                                           </div>
                                         </div>
@@ -167,7 +167,7 @@
                                             </h2>
                                             <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong>
+                                              <strong><a href="/student/study/2">Science</a></strong>
                                               </div>
                                             </div>
                                           </div>
@@ -179,7 +179,7 @@
                                             </h2>
                                             <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong>
+                                              <strong><a href="/student/study/3">Science</a></strong>
                                               </div>
                                             </div>
                                           </div>
@@ -191,7 +191,7 @@
                                             </h2>
                                             <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong>
+                                              <strong><a href="/student/study/4">Science</a></strong>
                                               </div>
                                             </div>
                                           </div>
@@ -203,7 +203,7 @@
                                             </h2>
                                             <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong>
+                                              <strong><a href="/student/study/5">Science</a></strong>
                                               </div>
                                             </div>
                                           </div>
@@ -215,7 +215,7 @@
                                             </h2>
                                             <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                                <strong>Science</strong>
+                                              <strong><a href="/student/study/6">Science</a></strong>
                                               </div>
                                             </div>
                                           </div>
