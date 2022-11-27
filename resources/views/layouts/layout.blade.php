@@ -262,7 +262,7 @@
                             </a>
                         </h6>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('t_quest') }}">
                                 <span data-feather="bar-chart-2"></span>
                                 Manage Study Material
                             </a>

@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Students\StudentAnnouncementController;
 use App\Http\Controllers\Students\StudyMaterialController;
+
+use App\Http\Controllers\Teacher\ManageStudyMaterialController;
+
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AdminNotesController;
 /*
@@ -41,6 +44,10 @@ Route::get('/6material', function () {
     return view('student/study_6yrs');
 })->name('6material');
 
+
+// Teacher
+Route::get('/t_quest', [ManageStudyMaterialController::class, 'index'])->name('t_quest');
+Route::post('/quest_store', [ManageStudyMaterialController::class, 'store'])->name('quest_store');
 
 // Admin
 Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->name('a_announcement');
