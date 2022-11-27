@@ -16,7 +16,7 @@ class StudyMaterialController extends Controller
     */
     public function index($years)
     {
-        $notes = db::table('notes')->select('id','Notetitle','Filename','subject_id')->where('subject_id','=',$years)->get() ; 
+        $notes = db::table('notes')->select('id','Notetitle','Filename','year_id','subject_id')->where('year_id','=',$years)->get() ; 
       
         return view('student.study_material')->with(compact('notes'));
     }
