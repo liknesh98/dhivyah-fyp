@@ -269,6 +269,12 @@
                             // edit_modal.style.display = "none";
                         }
 
+                        function display_answer_fields()
+                        {
+                            var value = val;
+
+                        }
+
 
                         //
                     </script>
