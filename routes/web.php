@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Students
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
-// Route::get('/student/notes/{year}', [StudentAnnouncementController::class, 'index'])->name('g_notes');
+Route::get('/student/exercise', [StudyMaterialController::class, 'getExercise'])->name('g_exercise');
 Route::get('/student/study/{year}', [StudyMaterialController::class , 'index'])->name('g_study');
 Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes']);
 // Admin

@@ -28,6 +28,14 @@ class StudyMaterialController extends Controller
         return response()->file($file[0]);
 
     }
-    
+    public function getExercise(){
+        
+        //$file  = db::table('notes')->where('id','=',$id)->pluck('Filename'); 
+        
+        //return response()->file($file[0]);
+
+        return view('student.studentexercise'); 
+
+    }
 
 }
