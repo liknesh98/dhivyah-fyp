@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Students\StudentAnnouncementController;
 use App\Http\Controllers\Students\StudyMaterialController;
+
+use App\Http\Controllers\Teacher\ManageStudyMaterialController;
+
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AdminNotesController;
 /*
@@ -36,6 +39,13 @@ Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->
 Route::get('/student/exercise', [StudyMaterialController::class, 'getExercise'])->name('g_exercise');
 Route::get('/student/study/{year}', [StudyMaterialController::class , 'index'])->name('g_study');
 Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes']);
+
+
+// Teacher
+Route::get('/t_quest', [ManageStudyMaterialController::class, 'index'])->name('t_quest');
+Route::post('/quest_store', [ManageStudyMaterialController::class, 'store'])->name('quest_store');
+
+
 // Admin
 Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->name('a_announcement');
 Route::post('/announcement_store', [AdminAnnouncementController::class, 'store'])->name('announcement_store');

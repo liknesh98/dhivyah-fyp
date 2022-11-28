@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
-use App\Models\Note;
+use App\Models\ExerciseQuestions;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
 
-class AdminNotesController extends Controller
+class ManageStudyMaterialController extends Controller
 {
     /**
     * Display a listing of the resource.
@@ -18,21 +18,21 @@ class AdminNotesController extends Controller
 
     function __construct()
     {
-        $this->notesModel = new Note();
+        $this->questionsModel = new ExerciseQuestions();
     }
     public function index()
     {
         // $notes = Note::orderBy('id')->get();
-        $notes = $this->notesModel->get_notes_list();
-        $data['notes'] =$notes;
+        $questions = $this->questionsModel->get_questions_list();
+        $data['questions'] =$questions;
 
-        $drop_subjects = $this->notesModel->get_subject_list();
+        $drop_subjects = $this->questionsModel->get_subject_list();
         $data['drop_subjects'] =$drop_subjects;
 
-        $drop_years = $this->notesModel->get_year_list();
+        $drop_years = $this->questionsModel->get_year_list();
         $data['drop_years'] =$drop_years;
 
-        return view('admin.notes', $data);
+        return view('teacher.questions', $data);
     }
 
     /**
@@ -44,7 +44,6 @@ class AdminNotesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
             'subject' => 'required',
             'year' => 'required',
         ]);
@@ -54,15 +53,16 @@ class AdminNotesController extends Controller
         $new_file_name = $this->get_new_file_name($file);
 
 
-      $destinationPath = 'uploads/notes';
+
+      $destinationPath = 'uploads/questions';
       $file->move($destinationPath, $new_file_name);
       $file_path = $destinationPath . '/' . $new_file_name;
 
-      Note::create(array(
-            'Notetitle' => $request->post('title'),
+      ExerciseQuestions::create(array(
+            'quest_name' => $request->post('question'),
             'subject_id'  => $request->post('subject'),
             'year_id'  => $request->post('year'),
-            'Filename' => $file_path,
+            'file_name' => $file_path,
         ));
 
 
@@ -89,7 +89,7 @@ class AdminNotesController extends Controller
 
       //Move Uploaded File
 
-        return redirect()->route('a_note')->with('success','Note has been created successfully.');
+        return redirect()->route('t_quest')->with('success','Question has been created successfully.');
     }
 
     /**
