@@ -262,10 +262,55 @@
                             </a>
                         </h6>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('t_quest') }}">
-                                <span data-feather="bar-chart-2"></span>
-                                Manage Study Material
-                            </a>
+                        <a class="nav-link " aria-current="page" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMain" aria-expanded="true" aria-controls="collapseMain">
+                                            <span data-feather="home"></span>
+                                            Manage Study Material
+                                        </a>
+
+
+
+                                <div id="collapseMain" class="accordion-collapse collapse show" aria-labelledby="headingMain" data-bs-parent="#accordionExample">
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="accordion-item">
+                                          <h2 class="accordion-header" id="notesheading">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#notes" aria-expanded="true" aria-controls="collapseOne">
+                                            Add Notes
+                                            </button>
+                                          </h2>
+                                          <div id="notes" class="accordion-collapse collapse show" aria-labelledby="notesheading" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                              <strong><a href="/student/study/1">Notes</a></strong>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="exerciseheading">
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#exercise" aria-expanded="true" aria-controls="collapseTwo">
+                                              Add Exercise
+                                              </button>
+                                            </h2>
+                                            <div id="exercise" class="accordion-collapse collapse show" aria-labelledby="exerciseheading" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                              <strong><a href="/teacher/exercise">Exercise</a></strong>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header" id="videoheading">
+                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#video" aria-expanded="true" aria-controls="collapseThree">
+                                              Add Videos
+                                              </button>
+                                            </h2>
+                                            <div id="video" class="accordion-collapse collapse show" aria-labelledby="videoheading" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                              <strong><a href="/student/study/3">Videos</a></strong>
+                                              </div>
+                                            </div>
+                                          </div>
+                                         
+                                         
+                                      </div>
+                              </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">

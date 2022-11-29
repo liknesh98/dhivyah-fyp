@@ -136,4 +136,8 @@ class ManageStudyMaterialController extends Controller
         Note::destroy($id);
         return redirect()->route('a_note')->with('success','Note has been deleted successfully');
     }
+
+    public function exercise() {
+        return view('teacher.exercise') ; 
+    }
 }

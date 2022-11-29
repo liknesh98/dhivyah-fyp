@@ -44,6 +44,7 @@ Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes'])
 // Teacher
 Route::get('/t_quest', [ManageStudyMaterialController::class, 'index'])->name('t_quest');
 Route::post('/quest_store', [ManageStudyMaterialController::class, 'store'])->name('quest_store');
+Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'])->name('exercise');
 
 
 // Admin
