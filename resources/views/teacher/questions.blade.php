@@ -273,13 +273,17 @@
                         }
                         function display_answer_fields(element)
                         {
-                            console.log(element.value);
+
                             var select_value = element.value;
-                            document.getElementById("divId").innerHTML = "<div>Working</div>"
-                            for (var i=1; i<select_value; i++)
+                            new_input_tag = "<div class=\"row mb-3\"><label for=\"desc\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Description') }}</label><div class=\"col-md-6\"><input id=\"desc\" type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"desc\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" id=\"image_upload\" name=\"image_upload\"></div>";
+
+                            input_to_append = "";
+                            for (var i=0; i<select_value; i++)
                             {
-                                document.getElementById("divId").innerHTML += "<div>Working</div>"
+                                input_to_append += new_input_tag
                             }
+
+                            document.getElementById("divId").innerHTML = input_to_append;
 
                         }
 
