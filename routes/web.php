@@ -42,9 +42,10 @@ Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes'])
 
 
 // Teacher
-Route::get('/t_quest', [ManageStudyMaterialController::class, 'index'])->name('t_quest');
+Route::get('/t_quest/{exercise_id}', [ManageStudyMaterialController::class, 'question'])->name('/teacher/question');
 Route::post('/quest_store', [ManageStudyMaterialController::class, 'store'])->name('quest_store');
-Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'])->name('exercise');
+Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'])->name('/teacher/exercise');
+Route::post('/teacher/exercise_store',[ManageStudyMaterialController::class, 'exercise_store'])->name('exercise_store');
 Route::get('/teacher/note',[ManageStudyMaterialController::class, 'notes'])->name('notes');
 Route::get('/teacher/video',[ManageStudyMaterialController::class, 'videos'])->name('videos');
 

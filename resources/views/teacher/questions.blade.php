@@ -71,6 +71,16 @@
                                         @csrf
 
                                         <div class="row mb-3">
+                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ __('Exercise') }}</label>
+                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ $exercise->name }}</label>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ __('Year') }}</label>
+                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ $exercise->year }}</label>
+                                        </div>
+
+                                        <div class="row mb-3">
                                             <label for="question" class="col-md-4 col-form-label text-md-end">{{ __('Question') }}</label>
 
                                             <div class="col-md-6">
@@ -125,7 +135,6 @@
 
                                             <div class="col-md-6">
                                                 <select name="subject" onchange="display_answer_fields(this)" class="form-select" aria-label="Default select example">
-                                                    <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>
@@ -275,12 +284,11 @@
                         {
 
                             var select_value = element.value;
-                            new_input_tag = "<div class=\"row mb-3\"><label for=\"desc\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Description') }}</label><div class=\"col-md-6\"><input id=\"desc\" type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"desc\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" id=\"image_upload\" name=\"image_upload\"></div>";
 
                             input_to_append = "";
                             for (var i=0; i<select_value; i++)
                             {
-                                input_to_append += new_input_tag
+                                input_to_append += "<div class=\"row mb-3\"><label for=\"answer\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Answer') }}</label><div class=\"col-md-6\"><input type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"answer["+i+"]\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" name=\"ans_image_upload["+i+"]\"></div>";
                             }
 
                             document.getElementById("divId").innerHTML = input_to_append;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\ExerciseQuestions;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -20,9 +21,12 @@ class ManageStudyMaterialController extends Controller
     {
         $this->questionsModel = new ExerciseQuestions();
     }
-    public function index()
+    public function question($id)
     {
-        // $notes = Note::orderBy('id')->get();
+        $exerciseModel = new Exercise();
+        $exercise = $exerciseModel->get_exercise_details($id);
+        $data['exercise'] =$exercise;
+
         $questions = $this->questionsModel->get_questions_list();
         $data['questions'] =$questions;
 
@@ -138,13 +142,38 @@ class ManageStudyMaterialController extends Controller
     }
 
     public function exercise() {
-        return view('teacher.exercise') ; 
+
+        $exerciseModel = new Exercise();
+        $exercises = $exerciseModel->get_exercises_list();
+        $data['exercises'] =$exercises;
+
+        $drop_years = $this->questionsModel->get_year_list();
+        $data['drop_years'] =$drop_years;
+
+        return view('teacher.exercise', $data) ;
     }
+
+    public function exercise_store(Request $request)
+    {
+        $request->validate([
+            'exercise' => 'required',
+            'year' => 'required',
+        ]);
+
+
+        Exercise::create(array(
+            'name' => $request->post('exercise'),
+            'year_id'  => $request->post('year'),
+        ));
+
+        return redirect()->route('/teacher/exercise')->with('success','Exercise has been created successfully.');
+    }
+
     public function notes() {
-        return view('teacher.note') ; 
+        return view('teacher.note') ;
     }
 
     public function videos() {
-        return view('teacher.video') ; 
+        return view('teacher.video') ;
     }
 }
