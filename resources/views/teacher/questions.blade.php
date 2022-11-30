@@ -124,12 +124,15 @@
                                             <label for="question" class="col-md-4 col-form-label text-md-end">{{ __('No. Answer') }}</label>
 
                                             <div class="col-md-6">
-                                                <select name="subject" onchange="display_answer_fields()" class="form-select" aria-label="Default select example">
+                                                <select name="subject" onchange="display_answer_fields(this)" class="form-select" aria-label="Default select example">
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>
                                                 </select>
+                                            </div>
+                                            <div id="divId">
+
                                             </div>
                                         </div>
 
@@ -268,10 +271,15 @@
                             edit_modal.style.display = "block";
                             // edit_modal.style.display = "none";
                         }
-
-                        function display_answer_fields()
+                        function display_answer_fields(element)
                         {
-                            var value = val;
+                            console.log(element.value);
+                            var select_value = element.value;
+                            document.getElementById("divId").innerHTML = "<div>Working</div>"
+                            for (var i=1; i<select_value; i++)
+                            {
+                                document.getElementById("divId").innerHTML += "<div>Working</div>"
+                            }
 
                         }
 
