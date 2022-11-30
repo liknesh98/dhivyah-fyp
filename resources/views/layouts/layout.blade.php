@@ -109,7 +109,7 @@
 
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="logout">Sign out</a>
+                <a class="nav-link px-3" href="{{ route('logout') }}">Sign out</a>
             </div>
         </div>
     </header>
@@ -279,7 +279,7 @@
                                           </h2>
                                           <div id="notes" class="accordion-collapse collapse show" aria-labelledby="notesheading" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                              <strong><a href="/teacher/notes">Notes</a></strong>
+                                              <strong><a href="/teacher/note">Notes</a></strong>
                                             </div>
                                           </div>
                                         </div>

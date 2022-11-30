@@ -366,7 +366,7 @@ ul li:hover {
                 </td>
               </tr>
             </table>
-            <a href="{{ route('login') }}" class='pay-btn'><center>Checkout</center></a>
+            <a href="{{ route('register') }}" class='pay-btn'><center>Checkout</center></a>
 
           </div>
 
