@@ -36,7 +36,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Students
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
-// Route::get('/student/notes/{year}', [StudentAnnouncementController::class, 'index'])->name('g_notes');
+Route::get('/student/exercise', [StudyMaterialController::class, 'getExercise'])->name('g_exercise');
 Route::get('/student/study/{year}', [StudyMaterialController::class , 'index'])->name('g_study');
 Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes']);
 
@@ -44,7 +44,9 @@ Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes'])
 // Teacher
 Route::get('/t_quest', [ManageStudyMaterialController::class, 'index'])->name('t_quest');
 Route::post('/quest_store', [ManageStudyMaterialController::class, 'store'])->name('quest_store');
-
+Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'])->name('exercise');
+Route::get('/teacher/note',[ManageStudyMaterialController::class, 'notes'])->name('notes');
+Route::get('/teacher/video',[ManageStudyMaterialController::class, 'videos'])->name('videos');
 
 // Admin
 Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->name('a_announcement');

@@ -53,7 +53,7 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
                 <a href="#" class="nav-item nav-link">FAQ</a>
-             
+                <a href="#" class="nav-item nav-link">Buy Now</a>
                 <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
             </div>
             <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
