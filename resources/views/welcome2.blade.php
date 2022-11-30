@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>eLEARNING - eLearning HTML Template</title>
+    <title>E-LEARNING</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -53,7 +53,7 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
                 <a href="#" class="nav-item nav-link">FAQ</a>
-                <a href="#" class="nav-item nav-link">Buy Now</a>
+                <a href="{{ url('/payment') }}" class="nav-item nav-link">Buy Now</a>
                 <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
             </div>
             <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>

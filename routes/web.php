@@ -27,6 +27,9 @@ Route::get('/', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/payment', function () {
+    return view('payment');
+});
 
 
 Auth::routes();

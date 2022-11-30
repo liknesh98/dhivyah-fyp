@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" >
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -74,12 +74,24 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                
+                                
                             </div>
                         </div>
+
                     </form>
+                    
                 </div>
+                <div class="container" style="margin-top:20px;">
+                    <div class="justify-content-center">
+                    <p class="fw-bolder">Haven't gotten an account yet? <a href="/payment">Buy Now</a> </p>
+                    </div>
+                                
+                                </div>
             </div>
+            
         </div>
+        
     </div>
 </div>
 @endsection
