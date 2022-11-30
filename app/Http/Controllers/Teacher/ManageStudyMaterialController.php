@@ -140,4 +140,11 @@ class ManageStudyMaterialController extends Controller
     public function exercise() {
         return view('teacher.exercise') ; 
     }
+    public function notes() {
+        return view('teacher.note') ; 
+    }
+
+    public function videos() {
+        return view('teacher.video') ; 
+    }
 }

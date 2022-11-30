@@ -279,7 +279,7 @@
                                           </h2>
                                           <div id="notes" class="accordion-collapse collapse show" aria-labelledby="notesheading" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                              <strong><a href="/student/study/1">Notes</a></strong>
+                                              <strong><a href="/teacher/notes">Notes</a></strong>
                                             </div>
                                           </div>
                                         </div>
@@ -303,7 +303,7 @@
                                             </h2>
                                             <div id="video" class="accordion-collapse collapse show" aria-labelledby="videoheading" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                              <strong><a href="/student/study/3">Videos</a></strong>
+                                              <strong><a href="/teacher/video">Videos</a></strong>
                                               </div>
                                             </div>
                                           </div>
@@ -363,6 +363,12 @@
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Manage Staff
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file-text"></span>
+                                Profile
                             </a>
                         </li>
                     </ul>
