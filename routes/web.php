@@ -12,6 +12,10 @@ use App\Http\Controllers\Admin\AdminNotesController;
 use App\Http\Controllers\Admin\FeesListController;
 use App\Http\Controllers\Admin\StudentListController;
 use App\Http\Controllers\Admin\RegisterController;
+use App\Http\Controllers\Admin\StaffController;
+
+//General 
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,8 +66,13 @@ Route::get('/announcement_delete/{id}', [AdminAnnouncementController::class, 'de
 Route::get('/admin/student_list', [StudentListController::class, 'index'])->name('student_list');
 Route::get('/admin/fees', [FeesListController::class, 'index'])->name('fees');
 Route::get('/admin/registration', [RegisterController::class, 'index'])->name('registration');
+Route::get('/admin/staff', [StaffController::class, 'index'])->name('staff');
 
 Route::get('/a_note', [AdminNotesController::class, 'index'])->name('a_note');
 Route::post('/note_store', [AdminNotesController::class, 'store'])->name('note_store');
 Route::post('/note_update', [AdminNotesController::class, 'update'])->name('note_update');
 Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('note_delete');
+
+
+//General 
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
