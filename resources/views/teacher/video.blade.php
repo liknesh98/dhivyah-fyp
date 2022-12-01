@@ -16,13 +16,15 @@
     <th>No</th>
     <th>Video Name</th>
     <th>Year</th>
-    <th>View Videos</th>
+    <th>Action</th>
   </tr>
   <tr>
     <td>1</td>
     <td>Science Video</td>
     <td>Year 1</td>
-    <td><a type="button" class="btn btn-light">View</a></td>
+    <td><a type="button" class="btn btn-light">View</a>
+    <a type="button" class="btn btn-danger">Delete</a>
+    </td>
   </tr>
   
 </table>

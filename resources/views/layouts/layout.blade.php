@@ -312,12 +312,7 @@
                                       </div>
                               </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span>
-                                Integrations
-                            </a>
-                        </li>
+                       
                     </ul>
                     @endif
 
@@ -342,19 +337,19 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/student_list">
                                 <span data-feather="file-text"></span>
                                 Manage Student List
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/fees">
                                 <span data-feather="file-text"></span>
                                 Manage Fees
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/admin/registration">
                                 <span data-feather="file-text"></span>
                                 Manage Registration
                             </a>
