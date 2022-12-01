@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\ExerciseQuestions;
+use App\Models\QuestionAnswer;
 use App\Models\Exercise;
 use Illuminate\Http\Request;
 use Auth;
@@ -21,20 +22,14 @@ class ManageStudyMaterialController extends Controller
     {
         $this->questionsModel = new ExerciseQuestions();
     }
-    public function question($id)
+    public function question($exercise_id)
     {
         $exerciseModel = new Exercise();
-        $exercise = $exerciseModel->get_exercise_details($id);
+        $exercise = $exerciseModel->get_exercise_details($exercise_id);
         $data['exercise'] =$exercise;
 
-        $questions = $this->questionsModel->get_questions_list();
+        $questions = $this->questionsModel->get_questions_list($exercise_id);
         $data['questions'] =$questions;
-
-        $drop_subjects = $this->questionsModel->get_subject_list();
-        $data['drop_subjects'] =$drop_subjects;
-
-        $drop_years = $this->questionsModel->get_year_list();
-        $data['drop_years'] =$drop_years;
 
         return view('teacher.questions', $data);
     }
@@ -45,55 +40,69 @@ class ManageStudyMaterialController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function store(Request $request)
+    public function question_store(Request $request)
     {
-        $request->validate([
-            'subject' => 'required',
-            'year' => 'required',
-        ]);
+        // $request->validate([
+        //     'subject' => 'required',
+        //     'year' => 'required',
+        // ]);
 
-        $file = $request->file('file_upload');
+        $exercise_id = $request->post('exercise_id');
+        $question_file = $request->file('question_file_upload');
 
-        $new_file_name = $this->get_new_file_name($file);
-
-
-
-      $destinationPath = 'uploads/questions';
-      $file->move($destinationPath, $new_file_name);
-      $file_path = $destinationPath . '/' . $new_file_name;
-
-      ExerciseQuestions::create(array(
-            'quest_name' => $request->post('question'),
-            'subject_id'  => $request->post('subject'),
-            'year_id'  => $request->post('year'),
+        if(isset($question_file))
+        {
+            $question_new_file_name = $this->get_new_file_name($question_file);
+            $destinationPath = 'uploads/questions';
+            $question_file->move($destinationPath, $question_new_file_name);
+            $file_path = $destinationPath . '/' . $question_new_file_name;
+        }
+        else
+        {
+            $file_path = null;
+        }
+        $result = ExerciseQuestions::create(array(
+            'quest_name' => $request->post('question_name'),
+            'exercise_id'  => $exercise_id,
             'file_name' => $file_path,
         ));
 
+        $ans_file_array = $request->file('ans_image_upload');
 
 
 
-    //   //Display File Name
-    //   echo 'File Name: '.$file->getClientOriginalName();
-    //   echo '<br>';
+        $answer_names_array = $request->post('answer_name');
+        if (isset($answer_names_array))
+        {
+            $count = 0;
+            foreach ($request->post('answer_name') as $answer_name)
+            {
+                if(isset($ans_file_array[$count]))
+                {
+                    $answer_file = $ans_file_array[$count];
 
-    //   //Display File Extension
-    //   echo 'File Extension: '.$file->getClientOriginalExtension();
-    //   echo '<br>';
+                    $answer_new_file_name = $this->get_new_file_name($answer_file);
+                    $destinationPath = 'uploads/answer';
+                    $answer_file->move($destinationPath, $answer_new_file_name);
+                    $file_path = $destinationPath . '/' . $answer_new_file_name;
+                }
+                else
+                {
+                    $file_path = null;
+                }
 
-    //   //Display File Real Path
-    //   echo 'File Real Path: '.$file->getRealPath();
-    //   echo '<br>';
 
-    //   //Display File Size
-    //   echo 'File Size: '.$file->getSize();
-    //   echo '<br>';
+                QuestionAnswer::create(array(
+                    'ans_name' => $answer_name,
+                    'quest_id'  => $result['id'],
+                    'file_name' => $file_path,
+                ));
 
-    //   Display File Mime Type
-    //   echo 'File Mime Type: '.$file->getMimeType();
+                $count++;
+            }
+        }
 
-      //Move Uploaded File
-
-        return redirect()->route('t_quest')->with('success','Question has been created successfully.');
+        return redirect()->route('/teacher/question', ['exercise_id'=>$exercise_id])->with('success','Question has been created successfully.');
     }
 
     /**
