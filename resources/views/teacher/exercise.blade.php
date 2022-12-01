@@ -17,7 +17,7 @@
     <th>Exercise Name</th>
     <th>Year</th>
     <th>Add question</th>
-    <th>View Result</th>
+    <th>Action</th> 
   </tr>
 
   @php
@@ -32,7 +32,8 @@
     <td>{{$exercise->name}}</td>
     <td>{{$exercise->year}}</td>
     <td><a href="{{route('/teacher/question', ['exercise_id'=>$exercise->id])}}" type="button" class="btn btn-light">Add</a></td>
-    <td><a type="button" class="btn btn-light">View</a></td>
+    <td><a type="button" class="btn btn-light">View</a>
+    <a type="button" class="btn btn-danger">Delete</a></td>
   </tr>
    @endforeach
 

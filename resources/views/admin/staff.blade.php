@@ -14,19 +14,18 @@
   </tr>
 <tr>
     <th>No</th>
-    <th>Note Name</th>
-    <th>Year</th>
+    <th>Staff Name</th>
+    <th>Email</th>
     <th>Action</th>
   </tr>
   <tr>
     <td>1</td>
-    <td>Science Exercise</td>
-    <td>Year 1</td>
-    <td><a type="button" class="btn btn-light">View</a>
+    <td>Teacher</td>
+    <td>Teacher@gmail.com</td>
+    <td><a type="button" class="btn btn-light">Edit</a>
     <a type="button" class="btn btn-danger">Delete</a>
     </td>
   </tr>
   
 </table>
 @endsection
-

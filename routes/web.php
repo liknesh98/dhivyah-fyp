@@ -1,15 +1,21 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+//student
 use App\Http\Controllers\Students\StudentAnnouncementController;
 use App\Http\Controllers\Students\StudyMaterialController;
-
+//teacher
 use App\Http\Controllers\Teacher\ManageStudyMaterialController;
-
+//admin
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AdminNotesController;
+use App\Http\Controllers\Admin\FeesListController;
+use App\Http\Controllers\Admin\StudentListController;
+use App\Http\Controllers\Admin\RegisterController;
+use App\Http\Controllers\Admin\StaffController;
+
+//General 
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,8 +64,16 @@ Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->na
 Route::post('/announcement_store', [AdminAnnouncementController::class, 'store'])->name('announcement_store');
 Route::post('/announcement_update', [AdminAnnouncementController::class, 'update'])->name('announcement_update');
 Route::get('/announcement_delete/{id}', [AdminAnnouncementController::class, 'delete'])->name('announcement_delete');
+Route::get('/admin/student_list', [StudentListController::class, 'index'])->name('student_list');
+Route::get('/admin/fees', [FeesListController::class, 'index'])->name('fees');
+Route::get('/admin/registration', [RegisterController::class, 'index'])->name('registration');
+Route::get('/admin/staff', [StaffController::class, 'index'])->name('staff');
 
 Route::get('/a_note', [AdminNotesController::class, 'index'])->name('a_note');
 Route::post('/note_store', [AdminNotesController::class, 'store'])->name('note_store');
 Route::post('/note_update', [AdminNotesController::class, 'update'])->name('note_update');
 Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('note_delete');
+
+
+//General 
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
