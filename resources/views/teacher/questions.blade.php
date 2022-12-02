@@ -11,20 +11,14 @@
                     <div >
                         {{$question->quest_name}}
                     </div>
+                    <div>
+                        {{$question->file_name}}
+                    </div>
                     <div >
-                        <a href="{{route('question_delete', ['id'=>$question->id])}}">Delete</a>
+                        <a href="{{route('quest_delete', ['id'=>$question->id])}}">Delete</a>
                     </div>
                     <div >
                         <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#edit_modal" onclick="edit_item('{{$question->id}}')">Edit</a>
-                    </div>
-                    <div>
-                        {{$note->file_name}}
-                    </div>
-                    <div>
-                        {{$note->year}}
-                    </div>
-                    <div>
-                        {{$note->SubjectName}}
                     </div>
                 </div>
                 @endforeach
@@ -49,7 +43,7 @@
                                 <!--begin::Modal header-->
                                 <div class="modal-header pb-0 border-0 justify-content">
                                     <h1 class="modal-title">
-                                        Add Notes
+                                        Add Question
                                     </h1>
                                     <!--begin::Close-->
                                     <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
@@ -67,26 +61,27 @@
 
                                 <!--begin::Modal body-->
                                 <div class="modal-body scroll-y px-10 px-lg-15 pt-0 pb-15">
-                                    <form method="POST" action="{{ route('quest_store') }}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('/quest_store') }}" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="hidden" class="form-control" name="exercise_id" value="{{ $exercise->id }}">
 
                                         <div class="row mb-3">
-                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ __('Exercise') }}</label>
-                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ $exercise->name }}</label>
+                                            <label for="exercise" class="col-md-4 col-form-label text-md-end">{{ __('Exercise') }}</label>
+                                            <label for="exercise" class="col-md-4 col-form-label text-md-end">{{ $exercise->name }}</label>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ __('Year') }}</label>
-                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ $exercise->year }}</label>
+                                            <label for="year" class="col-md-4 col-form-label text-md-end">{{ __('Year') }}</label>
+                                            <label for="year" class="col-md-4 col-form-label text-md-end">{{ $exercise->year }}</label>
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="question" class="col-md-4 col-form-label text-md-end">{{ __('Question') }}</label>
+                                            <label for="question_name" class="col-md-4 col-form-label text-md-end">{{ __('Question') }}</label>
 
                                             <div class="col-md-6">
-                                                <input id="question" type="text" class="form-control @error('question') is-invalid @enderror" name="question" value="{{ old('question') }}" required autocomplete="question" autofocus>
+                                                <input id="question_name" type="text" class="form-control @error('question_name') is-invalid @enderror" name="question_name" value="{{ old('question_name') }}" required autocomplete="question_name" autofocus>
 
-                                                @error('question')
+                                                @error('question_name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -97,37 +92,8 @@
                                         <div class="row mb-3">
                                             <label class="col-md-4 col-form-label text-md-end">{{ __('File Upload') }}</label>
                                             <div class="col-md-6">
-                                                <input type="file" id="file_upload" name="file_upload">
+                                                <input type="file" id="file_upload" name="question_file_upload">
                                             </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <select name="subject" class="form-select" aria-label="Default select example">
-                                            @php
-                                                $count = 0
-                                            @endphp
-                                            @foreach ($drop_subjects as $subject)
-                                                <option @if($count == 0) selected @endif value="{{$subject->id}}">{{$subject->SubjectName}}</option>
-                                                @php
-                                                    $count++
-                                                @endphp
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-
-                                        <div class="row mb-3">
-                                            <select name="year" class="form-select" aria-label="Default select example">
-                                            @php
-                                                $count = 0
-                                            @endphp
-                                            @foreach ($drop_years as $year)
-                                                <option @if($count == 0) selected @endif value="{{$year->id}}">{{$year->year}}</option>
-                                                @php
-                                                    $count++
-                                                @endphp
-                                                @endforeach
-                                            </select>
                                         </div>
 
                                         <div class="row mb-3">
@@ -140,7 +106,7 @@
                                                     <option value="4">4</option>
                                                 </select>
                                             </div>
-                                            <div id="divId">
+                                            <div id="answer_div_id">
 
                                             </div>
                                         </div>
@@ -229,7 +195,6 @@
                                             <label for="desc" class="col-md-4 col-form-label text-md-end">{{ __('Image Upload - Later') }}</label>
                                         </div>
 
-
                                         <div class="row mb-0">
                                             <div class="col-md-8 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">
@@ -288,10 +253,10 @@
                             input_to_append = "";
                             for (var i=0; i<select_value; i++)
                             {
-                                input_to_append += "<div class=\"row mb-3\"><label for=\"answer\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Answer') }}</label><div class=\"col-md-6\"><input type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"answer["+i+"]\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" name=\"ans_image_upload["+i+"]\"></div>";
+                                input_to_append += "<div class=\"row mb-3\"><label for=\"answer_name\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Answer') }}</label><div class=\"col-md-6\"><input type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"answer_name["+i+"]\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" name=\"ans_image_upload["+i+"]\"></div><div class=\"row mb-3\"><label for=\"answer_status["+i+"]\">Answer</label><br><br><input type=\"radio\" name=\"answer_status\" value=\""+i+"\"></div>";
                             }
 
-                            document.getElementById("divId").innerHTML = input_to_append;
+                            document.getElementById("answer_div_id").innerHTML = input_to_append;
 
                         }
 

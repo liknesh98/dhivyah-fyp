@@ -52,7 +52,8 @@ Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes'])
 
 // Teacher
 Route::get('/t_quest/{exercise_id}', [ManageStudyMaterialController::class, 'question'])->name('/teacher/question');
-Route::post('/quest_store', [ManageStudyMaterialController::class, 'store'])->name('quest_store');
+Route::post('/quest_store', [ManageStudyMaterialController::class, 'question_store'])->name('/quest_store');
+Route::get('/quest_delete/{id}', [ManageStudyMaterialController::class, 'delete'])->name('quest_delete');
 Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'])->name('/teacher/exercise');
 Route::post('/teacher/exercise_store',[ManageStudyMaterialController::class, 'exercise_store'])->name('exercise_store');
 Route::get('/teacher/note',[ManageStudyMaterialController::class, 'notes'])->name('notes');

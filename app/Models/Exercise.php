@@ -12,7 +12,7 @@ class Exercise extends Model
 
     protected $fillable = [
 
-        'name', 'year_id'
+        'name', 'year_id', 'subject_id'
 
     ];
 
@@ -21,8 +21,8 @@ class Exercise extends Model
 
     function get_exercises_list()
     {
-        $exercises = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')
-        ->select($this->table.'.id', $this->table.'.name', 'years.year')
+        $exercises = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')->leftJoin('subjects', 'subjects.id','=', $this->table.'.subject_id')
+        ->select($this->table.'.id', $this->table.'.name', 'years.year', 'subjects.SubjectName')
         ->orderBy($this->table.'.id')->get();
 
         return $exercises;
@@ -30,8 +30,8 @@ class Exercise extends Model
 
     function get_exercise_details($id)
     {
-        $exercise = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')
-        ->select($this->table.'.id', $this->table.'.name', 'years.year')
+        $exercise = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')->leftJoin('subjects', 'subjects.id','=', $this->table.'.subject_id')
+        ->select($this->table.'.id', $this->table.'.name', 'years.year', 'subjects.SubjectName')
         ->orderBy($this->table.'.id')->where($this->table.'.id', '=', $id)->first();;
 
         return $exercise;
@@ -43,5 +43,13 @@ class Exercise extends Model
         $drop_years = $this->yearModel->get_year_list();
 
         return $drop_years;
+    }
+
+    function get_subject_list()
+    {
+        $this->subjectModel = new Subject();
+        $drop_subjects = $this->subjectModel->get_subject_list();
+
+        return $drop_subjects;
     }
 }

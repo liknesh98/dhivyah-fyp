@@ -12,7 +12,7 @@ class ExerciseQuestions extends Model
 
     protected $fillable = [
 
-        'quest_name', 'file_name' , 'answer', 'year_id', 'subject_id'
+        'quest_name', 'file_name' , 'exercise_id'
 
     ];
 
@@ -24,11 +24,10 @@ class ExerciseQuestions extends Model
         return $file_path;
     }
 
-    function get_questions_list()
+    function get_questions_list($exercise_id)
     {
-        $questions = DB::table($this->table)->join('subjects', 'subjects.id','=', $this->table.'.subject_id')->join('years', 'years.id','=', $this->table.'.year_id')
-        ->select($this->table.'.id', $this->table.'.quest_name', $this->table.'.file_name', $this->table.'.answer'  , 'years.year', 'subjects.SubjectName')
-        ->orderBy($this->table.'.id')->get();
+        $questions = DB::table($this->table)->select($this->table.'.id', $this->table.'.quest_name', $this->table.'.file_name', $this->table.'.exercise_id')
+        ->where($this->table.'.exercise_id', '=', $exercise_id)->orderBy($this->table.'.id')->get();
 
         return $questions;
     }

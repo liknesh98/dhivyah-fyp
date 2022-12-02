@@ -17,14 +17,14 @@
     <th>Exercise Name</th>
     <th>Year</th>
     <th>Add question</th>
-    <th>Action</th> 
+    <th>Action</th>
   </tr>
 
   @php
     $count = 0
     @endphp
   @foreach ($exercises as $exercise)
-  @php
+    @php
         $count++
     @endphp
   <tr>
