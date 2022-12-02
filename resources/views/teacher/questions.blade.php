@@ -195,7 +195,6 @@
                                             <label for="desc" class="col-md-4 col-form-label text-md-end">{{ __('Image Upload - Later') }}</label>
                                         </div>
 
-
                                         <div class="row mb-0">
                                             <div class="col-md-8 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">
@@ -254,7 +253,7 @@
                             input_to_append = "";
                             for (var i=0; i<select_value; i++)
                             {
-                                input_to_append += "<div class=\"row mb-3\"><label for=\"answer_name\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Answer') }}</label><div class=\"col-md-6\"><input type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"answer_name["+i+"]\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" name=\"ans_image_upload["+i+"]\"></div>";
+                                input_to_append += "<div class=\"row mb-3\"><label for=\"answer_name\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Answer') }}</label><div class=\"col-md-6\"><input type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"answer_name["+i+"]\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" name=\"ans_image_upload["+i+"]\"></div><div class=\"row mb-3\"><label for=\"answer_status["+i+"]\">Answer</label><br><br><input type=\"radio\" name=\"answer_status\" value=\""+i+"\"></div>";
                             }
 
                             document.getElementById("answer_div_id").innerHTML = input_to_append;

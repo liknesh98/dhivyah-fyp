@@ -96,6 +96,7 @@ class ManageStudyMaterialController extends Controller
                     'ans_name' => $answer_name,
                     'quest_id'  => $result['id'],
                     'file_name' => $file_path,
+                    'answer_status' => $request->post('answer_status') == $count ? 1 : 0,
                 ));
 
                 $count++;
@@ -126,7 +127,7 @@ class ManageStudyMaterialController extends Controller
             'desc'  => $request->post('desc'),
         );
         Note::where('id', $request->post('id'))
-    //   ->where('active', 1)
+        //   ->where('active', 1)
       ->update($update_announcement);
 
         return redirect()->route('a_note')->with('success','Note has been Updated successfully');

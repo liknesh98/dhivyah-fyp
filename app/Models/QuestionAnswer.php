@@ -12,7 +12,7 @@ class QuestionAnswer extends Model
 
     protected $fillable = [
 
-        'ans_name', 'file_name' , 'quest_id'
+        'ans_name', 'file_name' , 'quest_id', 'answer_status'
 
     ];
 

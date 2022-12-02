@@ -21,7 +21,7 @@ class Exercise extends Model
 
     function get_exercises_list()
     {
-        $exercises = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')->rightjoin('subjects', 'subjects.id','=', $this->table.'.subject_id')
+        $exercises = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')->leftJoin('subjects', 'subjects.id','=', $this->table.'.subject_id')
         ->select($this->table.'.id', $this->table.'.name', 'years.year', 'subjects.SubjectName')
         ->orderBy($this->table.'.id')->get();
 
