@@ -23,7 +23,8 @@ class StaffController extends Controller
 
     public function index (){
 
-        return view('admin.staff');
+        $staffs = DB::table('users')->select('id','name','email')->where('role','=',2)->get();
+        return view('admin.staff')->with(compact('staffs'));
     }
 
 }

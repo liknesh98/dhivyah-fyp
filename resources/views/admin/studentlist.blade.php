@@ -19,15 +19,16 @@
     <th>Year</th>
     <th>Action</th>
   </tr>
+  @foreach($students as $student)
   <tr>
-    <td>1</td>
-    <td>Lupin</td>
-    <td>lupin@gmail.com</td>
-    <td>4</td>
-    <td><a type="button" class="btn btn-light">Edit</a>
-    <a type="button" class="btn btn-danger">Delete</a>
+    <td>{{$student->id}}</td>
+    <td>{{$student->name}}</td>
+    <td>{{$student->email}}/td>
+    <td>{{$student->year_id}}</td>
+    <td><a href="#" type="button" class="btn btn-light">Edit</a>
+    <a  href="#" type="button" class="btn btn-danger">Delete</a>
     </td>
   </tr>
-  
+  @endforeach
 </table>
 @endsection

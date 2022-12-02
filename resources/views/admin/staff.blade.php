@@ -18,14 +18,15 @@
     <th>Email</th>
     <th>Action</th>
   </tr>
+  @foreach($staffs as $staff)
   <tr>
-    <td>1</td>
-    <td>Teacher</td>
-    <td>Teacher@gmail.com</td>
-    <td><a type="button" class="btn btn-light">Edit</a>
-    <a type="button" class="btn btn-danger">Delete</a>
+    <td>{{$staff->id}}</td>
+    <td>{{$staff->name}}</td>
+    <td>{{$staff->email}}</td>
+    <td><a href="#" type="button" class="btn btn-light">Edit</a>
+    <a  href="#" type="button" class="btn btn-danger">Delete</a>
     </td>
   </tr>
-  
+  @endforeach
 </table>
 @endsection

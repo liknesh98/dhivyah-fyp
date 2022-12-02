@@ -23,7 +23,9 @@ class StudentListController extends Controller
 
     public function index (){
 
-        return view('admin.studentlist');
+        $students = DB::table('users')->select('id','year_id','name','email')->where('role','=',1)->get(); 
+        
+        return view('admin.studentlist')->with(compact('students'));
     }
 
 }
