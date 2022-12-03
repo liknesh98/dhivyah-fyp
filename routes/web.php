@@ -68,6 +68,8 @@ Route::get('/admin/student_list', [StudentListController::class, 'index'])->name
 Route::get('/admin/fees', [FeesListController::class, 'index'])->name('fees');
 Route::get('/admin/registration', [RegisterController::class, 'index'])->name('registration');
 Route::get('/admin/staff', [StaffController::class, 'index'])->name('staff');
+Route::post('admin/student/edit',[StudentListController::class, 'edit'])->name('editStudents');
+Route::post('admin/student/delete',[StudentListController::class, 'delete'])->name('deleteStudents');
 
 Route::get('/a_note', [AdminNotesController::class, 'index'])->name('a_note');
 Route::post('/note_store', [AdminNotesController::class, 'store'])->name('note_store');
