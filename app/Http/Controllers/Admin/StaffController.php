@@ -26,6 +26,40 @@ class StaffController extends Controller
         $staffs = DB::table('users')->select('id','name','email')->where('role','=',2)->get();
         return view('admin.staff')->with(compact('staffs'));
     }
+    public function edit (Request $request){
+   
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+          
+        ]);
+
+       $id = $request->id ; 
+       $name = $request->name ; 
+       $email = $request->email ; 
+      
+
+       $update = DB::table('users')
+              ->where('id',$id)
+              ->update(['name' => $name , 'email' => $email ]);
+
+        
+        return redirect()->back()->with('message', 'Staff details has been edited'); 
+    }
+    public function delete (Request $request){
+       
+        $request->validate([
+            'id' => 'required',
+        ]);
+
+       $id = $request->id ; 
+     
+       $delete = DB::table('users')->delete($id);
+
+        
+        return redirect()->back()->with('message', 'Staff has been deleted'); 
+    }
 
 }
 
