@@ -9,7 +9,7 @@
 @endif
 <table class="table table-dark table-striped" style="margin-top:20px">
 <tr>
-    <th><a type="button" class="btn btn-light">New</a></th>
+    <th><a type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modal-new">New</a></th>
     <th></th>
     <th></th>
     <th></th>
@@ -81,4 +81,27 @@
   </div>
 </div>
 @endforeach
+ <!-- Modal -->
+ <div class="modal fade" id="modal-new" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Staff Details</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST" action="{{ route('newstaff') }}" enctype="multipart/form-data">
+      @csrf
+      <input type="hidden" id="id" name="id" value="{{$staff->id}}">
+        <label>Name:</label><input id="name" name="name" type="text" class="form-control" placeholder="name"  aria-label="name" aria-describedby="basic-addon2"></br>
+        <label>Email:</label><input id="email" name="email" type="text" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon3"></br>
+        <label>Password:</label><input id="password" name="password" type="password" class="form-control" placeholder="password" aria-label="password" aria-describedby="basic-addon4"></br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+  </form>
+    </div>
+  </div>
+</div>
+
 @endsection

@@ -7,7 +7,7 @@ use App\Models\Note;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
-
+use Illuminate\Support\Facades\Hash;
 class StaffController extends Controller
 {
     /**
@@ -59,6 +59,28 @@ class StaffController extends Controller
 
         
         return redirect()->back()->with('message', 'Staff has been deleted'); 
+    }
+
+    public function new (Request $request){
+   
+        $request->validate([
+           
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required', 
+          
+        ]);
+
+  
+       $name = $request->name ; 
+       $email = $request->email ; 
+       $password = Hash::make($request->password) ; 
+      
+
+       $update =DB::insert('insert into users (year_id,name,email,password,role) values (?,?, ?, ?,?)', [0, $name, $email, $password,2]); 
+
+        
+        return redirect()->back()->with('message', 'New staff has been added'); 
     }
 
 }
