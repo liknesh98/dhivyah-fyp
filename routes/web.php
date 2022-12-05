@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\StudentListController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\StaffController;
 
-//General 
+//General
 use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
@@ -45,17 +45,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Students
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
-Route::get('/student/exercise', [StudyMaterialController::class, 'getExercise'])->name('g_exercise');
-Route::get('/student/study/{year}', [StudyMaterialController::class , 'index'])->name('g_study');
+Route::get('/student/exercise/{exercise_id}', [StudyMaterialController::class, 'get_exercise'])->name('g_exercise');
+Route::get('/student/study/{year}/{subject}', [StudyMaterialController::class , 'index'])->name('g_study');
 Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes']);
 
 
 // Teacher
 Route::get('/t_quest/{exercise_id}', [ManageStudyMaterialController::class, 'question'])->name('/teacher/question');
+Route::get('/teacher/question_details/{question_id}', [ManageStudyMaterialController::class, 'question_details'])->name('teacher/question_details');
 Route::post('/quest_store', [ManageStudyMaterialController::class, 'question_store'])->name('/quest_store');
-Route::get('/quest_delete/{id}', [ManageStudyMaterialController::class, 'delete'])->name('quest_delete');
+Route::get('/quest_delete/{id}', [ManageStudyMaterialController::class, 'question_delete'])->name('quest_delete');
 Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'])->name('/teacher/exercise');
 Route::post('/teacher/exercise_store',[ManageStudyMaterialController::class, 'exercise_store'])->name('exercise_store');
+Route::get('/teacher/exercise_delete/{exercise_id}', [ManageStudyMaterialController::class, 'exercise_delete'])->name('teacher/exercise_delete');
 Route::get('/teacher/note',[ManageStudyMaterialController::class, 'notes'])->name('notes');
 Route::get('/teacher/video',[ManageStudyMaterialController::class, 'videos'])->name('videos');
 
@@ -75,5 +77,5 @@ Route::post('/note_update', [AdminNotesController::class, 'update'])->name('note
 Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('note_delete');
 
 
-//General 
+//General
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

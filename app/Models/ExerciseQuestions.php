@@ -32,6 +32,22 @@ class ExerciseQuestions extends Model
         return $questions;
     }
 
+    function get_questions_id($exercise_id)
+    {
+        $answers = DB::table($this->table)->select($this->table.'.id')
+        ->where('exercise_id','=',$exercise_id)->get();
+
+        return $answers;
+    }
+
+    function get_questions_details($question_id)
+    {
+        $questions = DB::table($this->table)->select($this->table.'.id', $this->table.'.quest_name', $this->table.'.file_name')
+        ->where($this->table.'.id', '=', $question_id)->first();
+
+        return $questions;
+    }
+
     function get_subject_list()
     {
         $this->subjectModel = new Subject();

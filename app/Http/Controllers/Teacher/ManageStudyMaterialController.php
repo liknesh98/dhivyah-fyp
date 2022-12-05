@@ -20,18 +20,32 @@ class ManageStudyMaterialController extends Controller
 
     function __construct()
     {
-        $this->questionsModel = new ExerciseQuestions();
+        $this->exerciseModel = new Exercise();
+        $this->questionModel = new ExerciseQuestions();
+        $this->answerModel = new QuestionAnswer();
     }
+
     public function question($exercise_id)
     {
-        $exerciseModel = new Exercise();
-        $exercise = $exerciseModel->get_exercise_details($exercise_id);
+        $exercise = $this->exerciseModel->get_exercise_details($exercise_id);
         $data['exercise'] =$exercise;
 
-        $questions = $this->questionsModel->get_questions_list($exercise_id);
+        $questions = $this->questionModel->get_questions_list($exercise_id);
         $data['questions'] =$questions;
 
         return view('teacher.questions', $data);
+    }
+
+
+    public function question_details($question_id)
+    {
+        $question = $this->questionModel->get_questions_details($question_id);
+        $data['question'] =$question;
+        // dd($data['question']);
+        $answers = $this->answerModel->get_answers_list($question_id);
+        $data['answers'] =$answers;
+
+        return view('teacher.question_details', $data);
     }
 
     /**
@@ -140,15 +154,55 @@ class ManageStudyMaterialController extends Controller
     * @return \Illuminate\Http\Response
     */
     // public function destroy(Company $company)
-    public function delete($id)
+    public function exercise_delete($exercise_id)
     {
-        // $file_path = DB::table('notes')->select('notes.Filename')->where('id', '=', $id)->first();
-        $file_path = $this->notesModel->get_file_path($id);
 
-        unlink(public_path($file_path->Filename));
+        $questions_id = $this->questionModel->get_questions_id($exercise_id);
 
-        Note::destroy($id);
-        return redirect()->route('a_note')->with('success','Note has been deleted successfully');
+        foreach($questions_id as $id)
+        {
+            $this->question_delete($id->id);
+        }
+
+
+        Exercise::destroy($exercise_id);
+
+        // return redirect()->route('a_note')->with('success','Note has been deleted successfully');
+        return redirect()->back();
+    }
+
+    public function question_delete($question_id)
+    {
+
+        $answers_id = $this->answerModel->get_answers_id($question_id);
+
+        foreach($answers_id as $id)
+        {
+            $this->answer_delete($id->id);
+        }
+
+        $file_path = $this->questionModel->get_file_path($question_id);
+
+        if ($file_path->file_name != null)
+        {
+            unlink(public_path($file_path->file_name));
+        }
+        ExerciseQuestions::destroy($question_id);
+
+        // return redirect()->route('a_note')->with('success','Note has been deleted successfully');
+        return redirect()->back();
+    }
+
+    public function answer_delete($id)
+    {
+        $file_path = $this->answerModel->get_file_path($id);
+
+        if ($file_path->file_name != null)
+        {
+            unlink(public_path($file_path->file_name));
+        }
+        $result = QuestionAnswer::destroy($id);
+        return $result;
     }
 
     public function exercise() {
@@ -157,7 +211,7 @@ class ManageStudyMaterialController extends Controller
         $exercises = $exerciseModel->get_exercises_list();
         $data['exercises'] =$exercises;
 
-        $drop_years = $this->questionsModel->get_year_list();
+        $drop_years = $this->questionModel->get_year_list();
         $data['drop_years'] =$drop_years;
 
         return view('teacher.exercise', $data) ;

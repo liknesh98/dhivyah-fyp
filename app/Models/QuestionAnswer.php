@@ -26,8 +26,16 @@ class QuestionAnswer extends Model
 
     function get_answers_list($question_id)
     {
-        $answers = DB::table($this->table)->select($this->table.'.id', $this->table.'.ans_name', $this->table.'.file_name')
+        $answers = DB::table($this->table)->select($this->table.'.id', $this->table.'.ans_name', $this->table.'.file_name', $this->table.'.answer_status')
         ->where('quest_id','=',$question_id)->orderBy($this->table.'.id')->get();
+
+        return $answers;
+    }
+
+    function get_answers_id($question_id)
+    {
+        $answers = DB::table($this->table)->select($this->table.'.id')
+        ->where('quest_id','=',$question_id)->get();
 
         return $answers;
     }

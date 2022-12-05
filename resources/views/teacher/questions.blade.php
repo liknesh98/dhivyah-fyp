@@ -1,37 +1,42 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        <div class="card-body">
 
-                @foreach ($questions as $question)
-                <div class="card">
-                    <div >
-                        {{$question->quest_name}}
-                    </div>
-                    <div>
-                        {{$question->file_name}}
-                    </div>
-                    <div >
-                        <a href="{{route('quest_delete', ['id'=>$question->id])}}">Delete</a>
-                    </div>
-                    <div >
-                        <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#edit_modal" onclick="edit_item('{{$question->id}}')">Edit</a>
-                    </div>
-                </div>
-                @endforeach
+<table class="table table-dark table-striped" style="margin-top:20px">
+<tr>
+    <th></th>
+    <th></th>
+    <th style="text-align: right;"><a type="button" class="btn btn-light" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#add_modal1">New Question</a>
+    </th>
 
-                    <!-- Trigger/Open The Modal -->
 
-                    <!-- <button id="add_btn">Open Modal</button> -->
-                    <button class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#add_modal1">Open Modal</button>
 
-                </div>
-        </div>
-    </div>
-</div>
+  </tr>
+<tr>
+    <th>No</th>
+    <th>Question</th>
+    <th style="text-align: right;">Action</th>
+  </tr>
+
+  @php
+    $count = 0
+    @endphp
+  @foreach ($questions as $question)
+    @php
+        $count++
+    @endphp
+  <tr>
+    <td>{{$count}}</td>
+    <td>{{$question->quest_name}}</td>
+    <td style="text-align: right;">
+        <a href="{{route('teacher/question_details', ['question_id'=>$question->id])}}" type="button" class="btn btn-light">View</a>
+        <a href="{{route('quest_delete', ['id'=>$question->id])}}" type="button" class="btn btn-danger">Delete</a>
+    </td>
+  </tr>
+   @endforeach
+
+</table>
+
 
 
                     <!-- Add Modal -->
@@ -253,7 +258,7 @@
                             input_to_append = "";
                             for (var i=0; i<select_value; i++)
                             {
-                                input_to_append += "<div class=\"row mb-3\"><label for=\"answer_name\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Answer') }}</label><div class=\"col-md-6\"><input type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"answer_name["+i+"]\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" name=\"ans_image_upload["+i+"]\"></div><div class=\"row mb-3\"><label for=\"answer_status["+i+"]\">Answer</label><br><br><input type=\"radio\" name=\"answer_status\" value=\""+i+"\"></div>";
+                                input_to_append += "<div class=\"row mb-3\"><label for=\"answer_name\" class=\"col-md-4 col-form-label text-md-end\">{{ __('Answer') }}</label><div class=\"col-md-6\"><input type=\"text\" class=\"form-control @error('desc') is-invalid @enderror\" name=\"answer_name["+i+"]\" required autocomplete=\"current-desc\">@error('desc')<span class=\"invalid-feedback\" role=\"alert\"><strong>{{ $message }}</strong></span>@enderror</div></div><div class=\"row mb-3\"><label class=\"col-md-4 col-form-label text-md-end\">{{ __('Image Upload') }}</label><input type=\"file\" name=\"ans_image_upload["+i+"]\"></div><div class=\"row mb-3\"><label for=\"answer_status["+i+"]\">Correct Answer</label><br><br><input type=\"radio\" name=\"answer_status\" value=\""+i+"\"></div>";
                             }
 
                             document.getElementById("answer_div_id").innerHTML = input_to_append;

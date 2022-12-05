@@ -147,78 +147,31 @@
 
                                 <div id="collapseMain" class="accordion-collapse collapse show" aria-labelledby="headingMain" data-bs-parent="#accordionExample">
                                     <div class="accordion" id="accordionExample">
+
+                                    @if( !($years->isEmpty()))
+                                        @for($y=0; $y < sizeof($years); $y++)
                                         <div class="accordion-item">
                                           <h2 class="accordion-header" id="headingOne">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                              Year 1
+                                              Year {{$years[$y]->year}}
                                             </button>
                                           </h2>
                                           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
-                                              <strong><a href="/student/study/1">Science</a></strong>
+                                            @if( !($subjects->isEmpty()))
+                                                @for($i=0; $i < sizeof($subjects); $i++)
+
+                                                <strong><a href="/student/study/{{$years[$y]->id}}/{{$subjects[$i]->id}}">{{$subjects[$i]->SubjectName}}</a></strong> </br>
+                                                @endfor
+                                                @else
+                                            @endif
                                             </div>
                                           </div>
                                         </div>
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingTwo">
-                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                                                Year 2
-                                              </button>
-                                            </h2>
-                                            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                              <div class="accordion-body">
-                                              <strong><a href="/student/study/2">Science</a></strong>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingThree">
-                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                                Year 3
-                                              </button>
-                                            </h2>
-                                            <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                              <div class="accordion-body">
-                                              <strong><a href="/student/study/3">Science</a></strong>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingFour">
-                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                                Year 4
-                                              </button>
-                                            </h2>
-                                            <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                                              <div class="accordion-body">
-                                              <strong><a href="/student/study/4">Science</a></strong>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingFive">
-                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                                                Year 5
-                                              </button>
-                                            </h2>
-                                            <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                                              <div class="accordion-body">
-                                              <strong><a href="/student/study/5">Science</a></strong>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingSix">
-                                              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
-                                                Year 6
-                                              </button>
-                                            </h2>
-                                            <div id="collapseSix" class="accordion-collapse collapse show" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
-                                              <div class="accordion-body">
-                                              <strong><a href="/student/study/6">Science</a></strong>
-                                              </div>
-                                            </div>
-                                          </div>
+                                            @endfor
+                                            @else
+                                        @endif
+
                                       </div>
                               </div>
 
@@ -307,12 +260,12 @@
                                               </div>
                                             </div>
                                           </div>
-                                         
-                                         
+
+
                                       </div>
                               </div>
                         </li>
-                       
+
                     </ul>
                     @endif
 

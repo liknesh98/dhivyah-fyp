@@ -28,6 +28,15 @@ class Exercise extends Model
         return $exercises;
     }
 
+    function get_exercises($year, $subject)
+    {
+        $exercises = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')->leftJoin('subjects', 'subjects.id','=', $this->table.'.subject_id')
+        ->select($this->table.'.id', $this->table.'.name', 'years.year', 'subjects.SubjectName')
+        ->where($this->table.'.year_id','=',$year)->where($this->table.'.subject_id','=',$subject)->orderBy($this->table.'.id')->get();
+
+        return $exercises;
+    }
+
     function get_exercise_details($id)
     {
         $exercise = DB::table($this->table)->join('years', 'years.id','=', $this->table.'.year_id')->leftJoin('subjects', 'subjects.id','=', $this->table.'.subject_id')
