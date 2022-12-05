@@ -27,17 +27,19 @@ class ProfileController extends Controller
     }
 
     public function update (Request $request){
+        
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'year' => 'required',
+            
         ]);
         $name = $request->name; 
-        $year = $request->year; 
+       
         $email = $request->email ; 
+        $id = $request->id;
         $update = DB::table('users')
         ->where('id',$id)
-        ->update(['name' => $name , 'email' => $email , 'year_id'=>$year]);
+        ->update(['name' => $name , 'email' => $email]);
         
         return redirect()->back()->with('message', 'Profile has been edited'); 
     }

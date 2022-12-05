@@ -189,11 +189,10 @@ mark {
                     @csrf
                     <div class="modal-body">
                       <input type="hidden" id="id" name="id" value="{{$userdetails->id}}">
+                      <input type="hidden" id="hiddenyear" name="hiddenyear" value="{{$userdetails->year_id}}">
                       <label>Name:</label><input id="name" name="name" type="text" class="form-control" placeholder="name" value="{{$userdetails->name}}" aria-label="name" aria-describedby="basic-addon2"></br>
                       <label>Email:</label><input id="email" name="email" type="text" class="form-control" placeholder="email" value="{{$userdetails->email}}" aria-label="email" aria-describedby="basic-addon3"></br>
-                      @if($userdetails->role == 1)
-                      <label>Year:</label><input  id="year" name="year" type="text" class="form-control" placeholder="year" value="{{$userdetails->year_id}}" aria-label="year" aria-describedby="basic-addon4"></br>
-                      @endif
+    
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
