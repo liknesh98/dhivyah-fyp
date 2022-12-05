@@ -23,11 +23,13 @@ class StudentListController extends Controller
 
     public function index (){
 
+       
         $students = DB::table('users')->select('id','year_id','name','email')->where('role','=',1)->get(); 
         
         return view('admin.studentlist')->with(compact('students'));
     }
     public function edit (Request $request){
+       
 
         $request->validate([
             'id' => 'required',

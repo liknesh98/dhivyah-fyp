@@ -82,3 +82,5 @@ Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('
 
 //General 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('updateprofile');
+Route::post('/profile/changepwd', [ProfileController::class, 'changePwd'])->name('changepassword');
