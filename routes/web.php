@@ -69,7 +69,12 @@ Route::get('/announcement_delete/{id}', [AdminAnnouncementController::class, 'de
 Route::get('/admin/student_list', [StudentListController::class, 'index'])->name('student_list');
 Route::get('/admin/fees', [FeesListController::class, 'index'])->name('fees');
 Route::get('/admin/registration', [RegisterController::class, 'index'])->name('registration');
+Route::post('admin/student/edit',[StudentListController::class, 'edit'])->name('editStudents');
+Route::post('admin/student/delete',[StudentListController::class, 'delete'])->name('deleteStudents');
+Route::post('admin/staff/new',[StaffController::class, 'new'])->name('newstaff');
 Route::get('/admin/staff', [StaffController::class, 'index'])->name('staff');
+Route::post('admin/staff/edit',[StaffController::class, 'edit'])->name('editstaff');
+Route::post('admin/staff/delete',[StaffController::class, 'delete'])->name('deletestaff');
 
 Route::get('/a_note', [AdminNotesController::class, 'index'])->name('a_note');
 Route::post('/note_store', [AdminNotesController::class, 'store'])->name('note_store');
@@ -77,5 +82,12 @@ Route::post('/note_update', [AdminNotesController::class, 'update'])->name('note
 Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('note_delete');
 
 
+<<<<<<< HEAD
 //General
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+=======
+//General 
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('updateprofile');
+Route::post('/profile/changepwd', [ProfileController::class, 'changePwd'])->name('changepassword');
+>>>>>>> 9ac0fc6795c25edf8c420e847531558b535c45fa

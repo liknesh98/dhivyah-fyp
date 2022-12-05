@@ -1,6 +1,11 @@
 @extends('layouts.layout')
 
 @section('content')
+@if (session('message'))
+    <div class="alert alert-primary" role="alert">
+        {{ session('message') }}
+    </div>
+@endif
 <style>
 body{
     color: #6F8BA4;
@@ -128,47 +133,39 @@ mark {
 </style>
 
 <div class="container">
+  
                 <div class="row align-items-center flex-row-reverse">
                     <div class="col-lg-6">
                         <div class="about-text go-to">
-                
+                        
                             <div class="row about-list">
                                 <div class="col-md-6">
+                               
                                     <div class="media">
-                                        <label>Birthday</label>
-                                        <p>4th april 1998</p>
+                                        <label>Name</label>
+                                        <p>{{$userdetails->name}}</p>
                                     </div>
+                                    @if($userdetails->role == 1 )
                                     <div class="media">
-                                        <label>Age</label>
-                                        <p>22 Yr</p>
+                                        <label>Year</label>
+                                        <p>{{$userdetails->year_id}}</p>
                                     </div>
-                                    <div class="media">
-                                        <label>Residence</label>
-                                        <p>Canada</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Address</label>
-                                        <p>California, USA</p>
-                                    </div>
+                                    @endif
                                 </div>
                                 <div class="col-md-6">
                                     <div class="media">
                                         <label>E-mail</label>
-                                        <p>info@domain.com</p>
+                                        <p>{{$userdetails->email}}</p>
                                     </div>
+                                    
                                     <div class="media">
-                                        <label>Phone</label>
-                                        <p>820-885-3321</p>
+                                    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-edit-{{$userdetails->id}}">Update</a>
+                                    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-changepwd-{{$userdetails->id}}">Change Password</a>
                                     </div>
-                                    <div class="media">
-                                        <label>Skype</label>
-                                        <p>skype.0404</p>
-                                    </div>
-                                    <div class="media">
-                                        <label>Freelance</label>
-                                        <p>Available</p>
-                                    </div>
+                                
                                 </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -178,35 +175,76 @@ mark {
                         </div>
                     </div>
                 </div>
-                <div class="counter">
-                    <div class="row">
-                        <div class="col-6 col-lg-3">
-                            <div class="count-data text-center">
-                                <h6 class="count h2" data-to="500" data-speed="500">500</h6>
-                                <p class="m-0px font-w-600">Happy Clients</p>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="count-data text-center">
-                                <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                                <p class="m-0px font-w-600">Project Completed</p>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="count-data text-center">
-                                <h6 class="count h2" data-to="850" data-speed="850">850</h6>
-                                <p class="m-0px font-w-600">Photo Capture</p>
-                            </div>
-                        </div>
-                        <div class="col-6 col-lg-3">
-                            <div class="count-data text-center">
-                                <h6 class="count h2" data-to="190" data-speed="190">190</h6>
-                                <p class="m-0px font-w-600">Telephonic Talk</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  
             </div>
+            <!-- modal -->
+            <div class="modal fade" id="modal-edit-{{$userdetails->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Update Details</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST" action="{{ route('updateprofile') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                      <input type="hidden" id="id" name="id" value="{{$userdetails->id}}">
+                      <input type="hidden" id="hiddenyear" name="hiddenyear" value="{{$userdetails->year_id}}">
+                      <label>Name:</label><input id="name" name="name" type="text" class="form-control" placeholder="name" value="{{$userdetails->name}}" aria-label="name" aria-describedby="basic-addon2"></br>
+                      <label>Email:</label><input id="email" name="email" type="text" class="form-control" placeholder="email" value="{{$userdetails->email}}" aria-label="email" aria-describedby="basic-addon3"></br>
+    
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade" id="modal-changepwd-{{$userdetails->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form name="myForm" onsubmit="return validateForm()" method="POST" action="{{ route('changepassword')}}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                      <input type="hidden" id="id" name="id" value="{{$userdetails->id}}">
+                      <label>New Password:</label><input id="newpwd" name="newpwd" type="password" class="form-control" placeholder="password"  aria-label="password" aria-describedby="basic-addon4"></br>
+                      <label>Confirm Password:</label><input id="conpwd" name="conpwd" type="password" class="form-control" placeholder="confirm password"  aria-label="confirm password" aria-describedby="basic-addon5"></br>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+                  </div>
+                </div>
+              </div>
+              
+              <script>
+          function validateForm() {
+          let x = document.forms["myForm"]["newpwd"].value;
+          let y = document.forms["myForm"]["conpwd"].value;
+            if (x == "") {
+            alert("New password must be filled out");
+                return false;
+              }
+              if (y == "") {
+            alert("Confirm password must be filled out");
+                return false;
+              }
+              if(x != y ){
+                alert("Password do not match");
+                return false;
+              }
+              }
+          </script>
 @endsection
 
 
