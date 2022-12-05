@@ -82,12 +82,7 @@ Route::post('/note_update', [AdminNotesController::class, 'update'])->name('note
 Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('note_delete');
 
 
-<<<<<<< HEAD
 //General
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-=======
-//General 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('updateprofile');
 Route::post('/profile/changepwd', [ProfileController::class, 'changePwd'])->name('changepassword');
->>>>>>> 9ac0fc6795c25edf8c420e847531558b535c45fa
