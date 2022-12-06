@@ -40,7 +40,9 @@
         @if( !($exercises->isEmpty()))
             @for($i=0; $i < sizeof($exercises); $i++)
 
-            <strong><a href="/student/exercise/{{$exercises[$i]->id}}">{{$exercises[$i]->name}}</a></strong> </br>
+            <strong><a href="/student/exercise/{{$exercises[$i]->id}}">{{$exercises[$i]->name}}</a></strong>
+            Result:
+            <strong><a href="/student/exercise/{{$exercises[$i]->id}}">{{$exercises[$i]->results}}</a></strong> </br>
             @endfor
             @else
             <strong>EXERCISES NOT AVAILABLE</strong> </br>

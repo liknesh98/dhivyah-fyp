@@ -32,6 +32,14 @@ class QuestionAnswer extends Model
         return $answers;
     }
 
+    function get_correct_answer($question_id)
+    {
+        $answers = DB::table($this->table)->select($this->table.'.id')
+        ->where('quest_id','=',$question_id)->where('answer_status','=','1')->orderBy($this->table.'.id')->first();
+
+        return $answers;
+    }
+
     function get_answers_id($question_id)
     {
         $answers = DB::table($this->table)->select($this->table.'.id')

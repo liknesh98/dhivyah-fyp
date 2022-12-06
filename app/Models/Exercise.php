@@ -46,6 +46,14 @@ class Exercise extends Model
         return $exercise;
     }
 
+    function get_exercise_yearsubject($exercise_id)
+    {
+        $exercise = DB::table($this->table)->select($this->table.'.id', $this->table.'.year_id', $this->table.'.subject_id')
+        ->where($this->table.'.id', '=', $exercise_id)->first();;
+
+        return $exercise;
+    }
+
     function get_year_list()
     {
         $this->yearModel = new Year();

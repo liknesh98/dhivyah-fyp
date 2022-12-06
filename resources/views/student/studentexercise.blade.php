@@ -3,6 +3,9 @@
 @section('content')
 
     @if( !($questions->isEmpty()))
+    <form method="POST" action="{{ route('calculate_result') }}" enctype="multipart/form-data">
+    @csrf
+    <input type="hidden" class="form-control" aria-label="Text input with radio button" name="exercise_id" value="{{$exercise_id}}">
         @foreach($questions as $question)
             <div class="overflow-auto" style="margin-top: 20px;">
                 <div class="container text-center">
@@ -45,6 +48,14 @@
                 </div>
             </div>
         @endforeach
+            <div class="row mb-0">
+                <div class="col-md-8 offset-md-4">
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Submit') }}
+                    </button>
+                </div>
+            </div>
+        </form>
         @else
             <strong>EXERCISES NOT AVAILABLE</strong> </br>
     @endif
