@@ -57,6 +57,7 @@ Route::get('/teacher/question_details/{question_id}', [ManageStudyMaterialContro
 Route::post('/quest_store', [ManageStudyMaterialController::class, 'question_store'])->name('/quest_store');
 Route::get('/quest_delete/{id}', [ManageStudyMaterialController::class, 'question_delete'])->name('quest_delete');
 Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'])->name('/teacher/exercise');
+Route::get('/teacher/result',[ManageStudyMaterialController::class, 'result'])->name('/teacher/result');
 Route::post('/teacher/exercise_store',[ManageStudyMaterialController::class, 'exercise_store'])->name('exercise_store');
 Route::get('/teacher/exercise_delete/{exercise_id}', [ManageStudyMaterialController::class, 'exercise_delete'])->name('teacher/exercise_delete');
 Route::get('/teacher/note',[ManageStudyMaterialController::class, 'notes'])->name('notes');

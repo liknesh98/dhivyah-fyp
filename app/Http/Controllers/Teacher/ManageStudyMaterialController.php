@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ExerciseQuestions;
 use App\Models\QuestionAnswer;
 use App\Models\Exercise;
+use App\Models\Result;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -239,5 +240,15 @@ class ManageStudyMaterialController extends Controller
 
     public function videos() {
         return view('teacher.video') ;
+    }
+
+    public function result() {
+
+        $resultModel = new Result();
+        $results = $resultModel->get_result_student();
+        $data['results'] =$results;
+
+
+        return view('teacher.result', $data) ;
     }
 }

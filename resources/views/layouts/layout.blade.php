@@ -239,12 +239,17 @@
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="exerciseheading">
                                               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#exercise" aria-expanded="true" aria-controls="collapseTwo">
-                                              Add Exercise
+                                              Exercises
                                               </button>
                                             </h2>
                                             <div id="exercise" class="accordion-collapse collapse show" aria-labelledby="exerciseheading" data-bs-parent="#accordionExample">
                                               <div class="accordion-body">
-                                              <strong><a href="/teacher/exercise">Exercise</a></strong>
+                                              <strong><a href="/teacher/exercise">Add Exercise</a></strong>
+                                              </div>
+                                            </div>
+                                            <div id="exercise" class="accordion-collapse collapse show" aria-labelledby="exerciseheading" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body">
+                                              <strong><a href="/teacher/result">Results</a></strong>
                                               </div>
                                             </div>
                                           </div>
