@@ -13,16 +13,18 @@
       </button>
     </h2>
     <div id="notes" class="accordion-collapse collapse show" aria-labelledby="note" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        @if( !($notes->isEmpty()))
-        @for($i=0; $i < sizeof($notes); $i++)
-       
-        <strong><a href="/student/notes/{{$notes[$i]->id}}" target="_BLANK">{{$notes[$i]->Notetitle}}</a></strong> </br>
-        @endfor
-        @else 
-        <strong>NOTES NOT AVAILABLE</strong> </br>
-        @endif
-      </div>
+
+        <div class="accordion-body">
+            @if( !($notes->isEmpty()))
+            @for($i=0; $i < sizeof($notes); $i++)
+
+            <strong><a href="/student/notes/{{$notes[$i]->id}}" target="_BLANK">{{$notes[$i]->Notetitle}}</a></strong> </br>
+            @endfor
+            @else
+            <strong>NOTES NOT AVAILABLE</strong> </br>
+            @endif
+        </div>
+
     </div>
   </div>
   <div class="accordion-item">
@@ -32,9 +34,22 @@
       </button>
     </h2>
     <div id="exercises" class="accordion-collapse collapse" aria-labelledby="exercise" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-      </div>
+
+
+        <div class="accordion-body">
+        @if( !($exercises->isEmpty()))
+            @for($i=0; $i < sizeof($exercises); $i++)
+
+            <strong><a href="/student/exercise/{{$exercises[$i]->id}}">{{$exercises[$i]->name}}</a></strong>
+            Result:
+            <strong><a href="/student/exercise/{{$exercises[$i]->id}}">{{$exercises[$i]->results}}</a></strong> </br>
+            @endfor
+            @else
+            <strong>EXERCISES NOT AVAILABLE</strong> </br>
+            @endif
+        </div>
+
+
     </div>
   </div>
   <div class="accordion-item">
