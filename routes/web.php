@@ -39,9 +39,12 @@ Route::get('/payment', function () {
 
 
 Auth::routes();
+//General 
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('updateprofile');
+Route::post('/profile/changepwd', [ProfileController::class, 'changePwd'])->name('changepassword');
 Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 // Students
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
@@ -58,6 +61,7 @@ Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'
 Route::post('/teacher/exercise_store',[ManageStudyMaterialController::class, 'exercise_store'])->name('exercise_store');
 Route::get('/teacher/note',[ManageStudyMaterialController::class, 'notes'])->name('notes');
 Route::get('/teacher/video',[ManageStudyMaterialController::class, 'videos'])->name('videos');
+Route::post('/teacher/video/save',[ManageStudyMaterialController::class, 'video_store'])->name('videosStore');
 
 // Admin
 Route::get('/a_announcement', [AdminAnnouncementController::class, 'index'])->name('a_announcement');
@@ -73,14 +77,9 @@ Route::post('admin/staff/new',[StaffController::class, 'new'])->name('newstaff')
 Route::get('/admin/staff', [StaffController::class, 'index'])->name('staff');
 Route::post('admin/staff/edit',[StaffController::class, 'edit'])->name('editstaff');
 Route::post('admin/staff/delete',[StaffController::class, 'delete'])->name('deletestaff');
-
 Route::get('/a_note', [AdminNotesController::class, 'index'])->name('a_note');
 Route::post('/note_store', [AdminNotesController::class, 'store'])->name('note_store');
 Route::post('/note_update', [AdminNotesController::class, 'update'])->name('note_update');
 Route::get('/note_delete/{id}', [AdminNotesController::class, 'delete'])->name('note_delete');
 
 
-//General 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::post('/profile/update', [ProfileController::class, 'update'])->name('updateprofile');
-Route::post('/profile/changepwd', [ProfileController::class, 'changePwd'])->name('changepassword');
