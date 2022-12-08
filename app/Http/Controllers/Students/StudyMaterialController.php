@@ -25,6 +25,7 @@ class StudyMaterialController extends Controller
         $data= [];
         $data['notes'] = db::table('notes')->select('id','Notetitle','Filename','year_id','subject_id')->where('year_id','=',$year)->where('subject_id','=',$subject)->get() ;
         $data['exercises'] = $exerciseModel->get_exercises($year, $subject);
+        $data['videos'] = db::table('videos')->select('id','name')->where('year_id','=',$year)->where('subject_id','=',$subject)->get() ;
 
         if(!($data['exercises']->isEmpty() ))
         {
@@ -71,6 +72,13 @@ class StudyMaterialController extends Controller
 
         return view('student.studentexercise')->with($data);
 
+    }
+
+    public function video ($video_id){
+
+        $video = DB::table('videos')->select('name','file_name')->where('id','=',$video_id)->first(); 
+        
+        return view('student.video')->with(compact('video'));
     }
 
     public function calculate_result(Request $request)

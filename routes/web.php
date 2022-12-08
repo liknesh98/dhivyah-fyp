@@ -52,6 +52,8 @@ Route::get('/student/exercise/{exercise_id}', [StudyMaterialController::class, '
 Route::get('/student/study/{year}/{subject}', [StudyMaterialController::class , 'index'])->name('g_study');
 Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes']);
 Route::post('/calculate_result', [StudyMaterialController::class, 'calculate_result'])->name('calculate_result');
+Route::get('/student/videos/{id}', [StudyMaterialController::class, 'video'])->name('video');
+
 
 
 // Teacher
