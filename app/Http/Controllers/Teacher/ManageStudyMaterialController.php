@@ -10,7 +10,7 @@ use App\Models\Result;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
-
+use Carbon ; 
 class ManageStudyMaterialController extends Controller
 {
     /**
@@ -239,7 +239,18 @@ class ManageStudyMaterialController extends Controller
     }
 
     public function videos() {
-        return view('teacher.video') ;
+
+        $videos = DB::table('videos')->join('years','videos.year_id','=','years.id')
+        ->join('subjects','videos.subject_id','=','subjects.id')
+        ->select('videos.id as videoId','videos.name as videoName','videos.file_name as videoFileName'
+        ,'years.year as year','subjects.id as subId','subjects.SubjectName as subName')
+        ->get(); 
+        
+
+        $years = DB::table('years')->select('id','year')->get();
+        $subjects = DB::table('subjects')->select('id','SubjectName')->get() ; 
+      
+        return view('teacher.video')->with(compact('videos','years','subjects')) ;
     }
 
     public function result() {
@@ -251,4 +262,37 @@ class ManageStudyMaterialController extends Controller
 
         return view('teacher.result', $data) ;
     }
+
+    public function video_store(Request $request)
+    {
+        
+        $video_name = $request->name; 
+        $subject_id = $request->subjname;
+        $year_id = $request->years; 
+        $question_file = $request->file('file');
+        $created_at = Carbon\Carbon::now()->toDateTimeString();
+        $modified_at = Carbon\Carbon::now()->toDateTimeString();
+
+        if(isset($question_file))
+        {
+            $question_new_file_name = $this->get_new_file_name($question_file);
+            $destinationPath = 'uploads/videos';
+            $question_file->move($destinationPath, $question_new_file_name);
+            $file_path = $destinationPath . '/' . $question_new_file_name;
+        }
+        else
+        {
+            $file_path = null;
+            return redirect()->back()->with('Failed','File has not been uploaded');
+        }
+        
+
+       
+        $result= DB::insert('insert into videos (name ,year_id ,subject_id ,file_name ,created_at ,updated_at ) values (?,?,?,?,?,?)', [$video_name,  $year_id , $subject_id ,$file_path, $created_at, $modified_at ]); 
+
+       
+        
+        return redirect()->back()->with('message','Video has been created successfully.');
+    }
+
 }

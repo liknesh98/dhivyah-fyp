@@ -21,9 +21,11 @@ class ProfileController extends Controller
     // }
 
     public function index (){
-        $user = Auth::user()->id;
+
+        $user = Auth::user()->id; 
         $userdetails = DB::table('users')->select('id','name','year_id','email','role')->where('id','=',$user)->first() ; 
         return view('admin.profile')->with(compact('userdetails'));
+        
     }
 
     public function update (Request $request){
