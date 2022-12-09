@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 //student
+use App\Http\Controllers\Students\DashboardController;
 use App\Http\Controllers\Students\StudentAnnouncementController;
 use App\Http\Controllers\Students\StudyMaterialController;
 //teacher
@@ -44,6 +45,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // Students
+Route::get('/student/dashboard', [DashboardController::class, 'index'])->name('s_dashboard');
 Route::get('/s_announcement', [StudentAnnouncementController::class, 'index'])->name('s_announcement');
 Route::get('/student/exercise/{exercise_id}', [StudyMaterialController::class, 'get_exercise'])->name('g_exercise');
 Route::get('/student/study/{year}/{subject}', [StudyMaterialController::class , 'index'])->name('g_study');
