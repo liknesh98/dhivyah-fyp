@@ -145,7 +145,7 @@
 
 
 
-                                <div id="collapseMain" class="accordion-collapse collapse show" aria-labelledby="headingMain" data-bs-parent="#accordionExample">
+                                <div id="collapseMain" class="accordion-collapse collapse" aria-labelledby="headingMain" data-bs-parent="#accordionExample">
                                     <div class="accordion" id="accordionExample">
 
                                     @if( !($years->isEmpty()))
@@ -156,7 +156,7 @@
                                               Year {{$years[$y]->year}}
                                             </button>
                                           </h2>
-                                          <div id="acc{{$y}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                          <div id="acc{{$y}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
                                             @if( !($subjects->isEmpty()))
                                                 @for($i=0; $i < sizeof($subjects); $i++)
@@ -181,12 +181,6 @@
                             <a class="nav-link" href="{{ route('s_announcement') }}">
                                 <span data-feather="layers"></span>
                                 Announcement
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file"></span>
-                                Progress Report
                             </a>
                         </li>
                         <li class="nav-item">

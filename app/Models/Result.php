@@ -38,12 +38,19 @@ class Result extends Model
         }
     }
 
-    public function get_result_student()
+    public function get_result_student_by_year()
     {
-        $result = DB::table($this->table)->select($this->table.'.id', $this->table.'.result', 'exercises.name AS exercise', 'users.name AS student', 'years.year AS year')
-        ->join('exercises', 'exercises.id','=', $this->table.'.exercise_id')->join('users', 'users.id','=', $this->table.'.student_id')
-        ->join('years', 'years.id','=', 'exercises.year_id')->get();
+        $yearModel = new Year();
+        $years = $yearModel->get_year_list();
 
-        return $result;
+        $results = [];
+        foreach($years as $year)
+        {
+            $results[$year->year] = DB::table($this->table)->select($this->table.'.id', $this->table.'.result', 'exercises.name AS exercise', 'users.name AS student', 'years.year AS year', 'subjects.SubjectName AS subject')
+            ->join('exercises', 'exercises.id','=', $this->table.'.exercise_id')->join('users', 'users.id','=', $this->table.'.student_id')
+            ->join('years', 'years.id','=', 'exercises.year_id')->join('subjects', 'subjects.id','=', 'exercises.subject_id')->where('exercises.year_id', '=', $year->year)->get();
+        }
+
+        return $results;
     }
 }

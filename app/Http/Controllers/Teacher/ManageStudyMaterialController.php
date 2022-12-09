@@ -10,7 +10,7 @@ use App\Models\Result;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
-use Carbon ; 
+use Carbon ;
 class ManageStudyMaterialController extends Controller
 {
     /**
@@ -244,20 +244,19 @@ class ManageStudyMaterialController extends Controller
         ->join('subjects','videos.subject_id','=','subjects.id')
         ->select('videos.id as videoId','videos.name as videoName','videos.file_name as videoFileName'
         ,'years.year as year','subjects.id as subId','subjects.SubjectName as subName')
-        ->get(); 
-        
+        ->get();
+
 
         $years = DB::table('years')->select('id','year')->get();
-        $subjects = DB::table('subjects')->select('id','SubjectName')->get() ; 
-      
+        $subjects = DB::table('subjects')->select('id','SubjectName')->get() ;
+
         return view('teacher.video')->with(compact('videos','years','subjects')) ;
     }
 
     public function result() {
 
         $resultModel = new Result();
-        $results = $resultModel->get_result_student();
-        $data['results'] =$results;
+        $data['results'] = $resultModel->get_result_student_by_year();
 
 
         return view('teacher.result', $data) ;
@@ -265,10 +264,10 @@ class ManageStudyMaterialController extends Controller
 
     public function video_store(Request $request)
     {
-        
-        $video_name = $request->name; 
+
+        $video_name = $request->name;
         $subject_id = $request->subjname;
-        $year_id = $request->years; 
+        $year_id = $request->years;
         $question_file = $request->file('file');
         $created_at = Carbon\Carbon::now()->toDateTimeString();
         $modified_at = Carbon\Carbon::now()->toDateTimeString();
@@ -285,13 +284,13 @@ class ManageStudyMaterialController extends Controller
             $file_path = null;
             return redirect()->back()->with('Failed','File has not been uploaded');
         }
-        
 
-       
-        $result= DB::insert('insert into videos (name ,year_id ,subject_id ,file_name ,created_at ,updated_at ) values (?,?,?,?,?,?)', [$video_name,  $year_id , $subject_id ,$file_path, $created_at, $modified_at ]); 
 
-       
-        
+
+        $result= DB::insert('insert into videos (name ,year_id ,subject_id ,file_name ,created_at ,updated_at ) values (?,?,?,?,?,?)', [$video_name,  $year_id , $subject_id ,$file_path, $created_at, $modified_at ]);
+
+
+
         return redirect()->back()->with('message','Video has been created successfully.');
     }
 

@@ -61,7 +61,7 @@ class DashboardController extends Controller
             }
         }
         // dd($exercises);
-        return view('student.dashboard')->with(compact($exercises));
+        return view('student.dashboard')->with(compact('exercises'));
     }
 
 }
