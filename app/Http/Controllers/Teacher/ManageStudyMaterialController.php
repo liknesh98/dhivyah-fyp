@@ -7,6 +7,9 @@ use App\Models\ExerciseQuestions;
 use App\Models\QuestionAnswer;
 use App\Models\Exercise;
 use App\Models\Result;
+use App\Models\Note;
+use App\Models\Subject;
+use App\Models\Year;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
@@ -235,7 +238,65 @@ class ManageStudyMaterialController extends Controller
     }
 
     public function notes() {
-        return view('teacher.note') ;
+        $noteModel = new Note();
+        $data['notes'] = $noteModel->get_notes_list_by_year();
+
+
+        $noteModel = new Subject();
+        $drop_subjects = $noteModel->get_subject_list();
+        $data['drop_subjects'] =$drop_subjects;
+
+        $yearModel = new Year();
+        $drop_years = $yearModel->get_year_list();
+        $data['drop_years'] =$drop_years;
+
+        return view('teacher.note', $data) ;
+    }
+
+    public function getNotes($id){
+
+        $file  = db::table('notes')->where('id','=',$id)->pluck('Filename');
+
+        return response()->file($file[0]);
+
+    }
+
+    public function store_notes(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'subject' => 'required',
+            'year' => 'required',
+        ]);
+
+        $file = $request->file('file_upload');
+
+        $new_file_name = $this->get_new_file_name($file);
+
+
+      $destinationPath = 'uploads/notes';
+      $file->move($destinationPath, $new_file_name);
+      $file_path = $destinationPath . '/' . $new_file_name;
+
+      Note::create(array(
+            'Notetitle' => $request->post('title'),
+            'subject_id'  => $request->post('subject'),
+            'year_id'  => $request->post('year'),
+            'Filename' => $file_path,
+        ));
+
+        return redirect()->route('notes')->with('success','Note has been created successfully.');
+    }
+
+    public function notes_delete($id)
+    {
+        $noteModel = new Note();
+        $file_path = $noteModel->get_file_path($id);
+
+        unlink(public_path($file_path->Filename));
+
+        Note::destroy($id);
+        return redirect()->route('notes')->with('success','Note has been deleted successfully');
     }
 
     public function videos() {

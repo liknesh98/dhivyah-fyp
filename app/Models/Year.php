@@ -26,5 +26,4 @@ class Year extends Model
 
         return $drop_years;
     }
-
 }

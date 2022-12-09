@@ -50,19 +50,18 @@ class Note extends Model
         return $notes;
     }
 
-    function get_subject_list()
+    public function get_notes_list_by_year()
     {
-        $drop_subjects = DB::table('subjects')->select('subjects.id', 'subjects.SubjectName')
-        ->orderBy('subjects.id')->get();
+        $yearModel = new Year();
+        $years = $yearModel->get_year_list();
 
-        return $drop_subjects;
-    }
+        $results = [];
+        foreach($years as $year)
+        {
+            $results[$year->year] = DB::table($this->table)->select($this->table.'.id', $this->table.'.Notetitle', $this->table.'.Filename' , 'years.year AS year', 'subjects.SubjectName AS subject')
+            ->join('years', 'years.id','=', $this->table.'.year_id')->join('subjects', 'subjects.id','=', $this->table.'.subject_id')->where($this->table.'.year_id', '=', $year->year)->get();
+        }
 
-    function get_year_list()
-    {
-        $drop_years = DB::table('years')->select('years.id', 'years.year')
-        ->orderBy('years.id')->get();
-
-        return $drop_years;
+        return $results;
     }
 }
