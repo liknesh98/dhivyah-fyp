@@ -289,12 +289,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('a_note') }}">
-                                <span data-feather="file-text"></span>
-                                Manage Notes
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/admin/student_list">
                                 <span data-feather="file-text"></span>
                                 Manage Student List

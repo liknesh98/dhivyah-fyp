@@ -31,8 +31,16 @@ class DashboardController extends Controller
         $exercises = [];
         foreach($years as $year)
         {
-            array_push($exercises, $exerciseModel->get_exercises_using_year($year->id));
+            $one_year = $exerciseModel->get_exercises_using_year($year->id);
+            if(sizeof($one_year) >0)
+            {
+                array_push($exercises, $one_year);
             // $exercises[$year->year] = $exerciseModel->get_exercises_using_year($year->id);
+            }
+            else
+            {
+                array_push($exercises, array('year' => $year->year));
+            }
         }
 
         if(!(empty($exercises)))
@@ -41,7 +49,7 @@ class DashboardController extends Controller
             $count1=0;
             foreach($exercises as $exercise)
             {
-                if(!(empty($exercise)))
+                if((!isset($exercise['year'])))
             {
                 $count2=0;
                 foreach($exercise as $exer)
@@ -59,8 +67,9 @@ class DashboardController extends Controller
             }
                 $count1++;
             }
+
         }
-        // dd($exercises);
+
         return view('student.dashboard')->with(compact('exercises'));
     }
 

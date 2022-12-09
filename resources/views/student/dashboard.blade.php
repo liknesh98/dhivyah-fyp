@@ -3,8 +3,8 @@
 @section('content')
 
 @if(!empty($exercises))
-@foreach ($exercises as $exercise)
-@if(!empty($exercise[0]))
+@foreach ($exercises as $key => $exercise)
+@if(!isset($exercise['year']))
 <br>
 <strong>
   <div class="row justify-content-center">
@@ -30,18 +30,22 @@
     <td>{{$count}}</td>
     <td>{{$exer->name}}</td>
     <td>{{$exer->subject}}</td>
-    <td>{{$exer->results}}%</td>
+    <td>{{$exer->results}}</td>
   </tr>
    @endforeach
 
 </table>
-<hr style="position: relative;top: 20px;border: none;height: 12px;background: black;margin-bottom: 50px;"/>
 
+@else
+<strong><div class="row justify-content-center" style="margin-top:20px">
+YEAR {{$exercise['year']}}
+            EXERCISES NOT AVAILABLE
+</div></strong>
 @endif
+<hr style="position: relative;top: 20px;border: none;height: 8px;background: black;margin-bottom: 50px;"/>
 
 @endforeach
 
 @endif
-
 
 @endsection

@@ -60,7 +60,7 @@
     </h2>
     <div id="videos" class="accordion-collapse collapse" aria-labelledby="video" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        @if(($videos))
+        @if( !($videos->isEmpty()))
         @for($i=0; $i < sizeof($videos); $i++)
         <strong><a href="/student/videos/{{$videos[$i]->id}}">{{$videos[$i]->name}}</a></strong>
         @endfor
