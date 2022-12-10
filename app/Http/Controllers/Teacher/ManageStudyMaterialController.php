@@ -355,4 +355,11 @@ class ManageStudyMaterialController extends Controller
         return redirect()->back()->with('message','Video has been created successfully.');
     }
 
+    public function delete_video($id) {
+
+        $delete = DB::table('videos')->delete($id);
+        
+        return redirect()->back()->with('message','Video has been deleted successfully.');
+    } 
+
 }

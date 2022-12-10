@@ -31,8 +31,8 @@
     <td>{{$video->videoId}}</td>
     <td>{{$video->videoName}}</td>
     <td>{{$video->year}}</td>
-    <td><a type="button" class="btn btn-light">View</a>
-    <a type="button" class="btn btn-danger">Delete</a>
+    <td><a type="button" href="/student/videos/{{$video->videoId}}" class="btn btn-light">View</a>
+    <a type="button" href="/student/videos/delete/{{$video->videoId}}" class="btn btn-danger">Delete</a>
     @endforeach
     @else
     <td>NOT AVAILABLE</td>

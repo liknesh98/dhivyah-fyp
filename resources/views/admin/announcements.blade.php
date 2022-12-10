@@ -1,42 +1,49 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-        <div class="card-body">
+<table class="table table-dark table-striped" style="margin-top:20px">
+<tr>
+    <th><a type="button" class="btn btn-light" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#add_modal1">New</a></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
 
-                @foreach ($announcements as $announcement)
-                <div class="card">
-                    <div >
-                        {{$announcement->name}}
-                    </div>
-                    <div >
-                        <a href="{{route('announcement_delete', ['id'=>$announcement->id])}}">Delete</a>
-                    </div>
-                    <div >
-                        <a href="" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#edit_modal" onclick="edit_item('{{$announcement->id}}')">Edit</a>
-                    </div>
-                    <div>
-                        {{$announcement->desc}}
-                    </div>
-                        @if (isset($announcement->img_path))
-                    <div class="symbol symbol-45px me-5">
-                        <img src="{{url($announcement->img_path)}}" alt="Image"/>
-                    </div>
-                        @endif
-                </div>
-                @endforeach
 
-                    <!-- Trigger/Open The Modal -->
 
-                    <!-- <button id="add_btn">Open Modal</button> -->
-                    <button class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#add_modal1">Open Modal</button>
+  </tr>
+<tr>
+    <th>No</th>
+    <th>Announcement Name</th>
+    <th>Announcement Description</th>
+    <th>Image</th>
+    <th>Action</th>
+  </tr>
 
-                </div>
-        </div>
-    </div>
-</div>
+  @php
+    $count = 0
+    @endphp
+    @foreach ($announcements as $announcement)
+    @php
+        $count++
+    @endphp
+  <tr>
+    <td>{{$count}}</td>
+    <td> {{$announcement->name}}</td>
+    <td> {{$announcement->desc}}</td>
+    @if (isset($announcement->img_path))
+    <td> <img src="{{url($announcement->img_path)}}" alt="Image"/></td>
+    @else 
+    <td>NOT AVAILABLE</td>
+    @endif
+    <td><a type="button" class="btn btn-light" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#edit_modal" onclick="edit_item('{{$announcement->id}}')">Edit</a>
+    <a type="button" class="btn btn-danger" href="{{route('announcement_delete', ['id'=>$announcement->id])}}">Delete</a>
+    </td>
+  </tr>
+   @endforeach
+
+</table>
+
 
 
                     <!-- Add Modal -->

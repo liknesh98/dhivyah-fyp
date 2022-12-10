@@ -23,7 +23,8 @@ class DashboardController extends Controller
     {
         $yearsModel = new Year();
         $years = $yearsModel->get_year_list();
-
+        $announcement = DB::table('announcement')->latest('updated_at')->first();
+       
         $subjectsModel = new Subject();
         $subjects = $subjectsModel->get_subject_list();
 
@@ -70,7 +71,7 @@ class DashboardController extends Controller
 
         }
 
-        return view('student.dashboard')->with(compact('exercises'));
+        return view('student.dashboard')->with(compact('exercises','announcement'));
     }
 
 }
