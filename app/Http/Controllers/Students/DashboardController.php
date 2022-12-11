@@ -23,8 +23,12 @@ class DashboardController extends Controller
     {
         $yearsModel = new Year();
         $years = $yearsModel->get_year_list();
-        $announcement = DB::table('announcement')->latest('updated_at')->first();
-       
+
+        $announcement = DB::table('announcement')->select('announcement.id', 'announcement.name', 'announcement.desc', 'announcement.img_path')
+        ->where('announcement.id','=', DB::raw('(SELECT MAX(id) FROM announcement)'))->first();
+
+
+
         $subjectsModel = new Subject();
         $subjects = $subjectsModel->get_subject_list();
 

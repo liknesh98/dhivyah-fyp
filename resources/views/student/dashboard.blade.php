@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
+
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">{{$announcement->name}}</h4></br>
   @if($announcement->img_path != null)
@@ -8,7 +9,7 @@
   @endif
   <p>{{$announcement->desc}}</p>
   <hr>
-  
+
 </div>
 @if(!empty($exercises))
 @foreach ($exercises as $key => $exercise)

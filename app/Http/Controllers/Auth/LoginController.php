@@ -50,53 +50,33 @@ class LoginController extends Controller
         $password    = $credentials['password'];
         $role        = $credentials['role'];
 
-        // if ($role == 1)
-        // {
-        //     $user = DB::table('students')->where($this->username(), $username)->first();
-
-        // }
-        // else if($role == 2 )
-        // {
-        //     $user = DB::table('teachers')->where($this->username(), $username)->first();
-
-        // }
-        // else if ($role == 3)
-        // {
-        //     $user = DB::table('admins')->where($this->username(), $username)->first();
-
-        // }
-
-
-        // if (Hash::check($password, optional($user)->password)){
-
-
-        //     $this->guard()->login($user, true);
-        //     return true;
-
-        // }
-        // else {
-
-        //    return false ;
-        // }
-        // dd($credentials);
 
         if (Auth::attempt($credentials) )
         {
-            return redirect()->route('home');
+            // return redirect()->route('home');
 
-        }
-        else if($password == 'fyp123')
-        {
-            Auth::loginUsingId($user->id);
+            if ($role == 1)
+            {
+                return redirect()->route('s_dashboard');
 
-            return redirect()->route('home');
+            }
+            else if($role == 2 )
+            {
+                return redirect()->route('notes');
+
+            }
+            else if ($role == 3)
+            {
+                return redirect()->route('a_announcement');
+
+            }
+
         }
 
 
 
         return $this->sendFailedLoginResponse($request);
 
-        // return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
 
     }
 
@@ -105,50 +85,4 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
       }
-
-    //   protected function attemptLogin(Request $request) 	{
-       
-    //     $credentials = $request->only($this->username(), 'password','role');
-    //     $username    = $credentials[$this->username()];
-    //     $password    = $credentials['password'];
-    //     $role        = $credentials['role'] ; 
-         
-    //     $user = DB::table($role)->where($this->username(), $username)->first();
-        
-    //     // if (Hash::check($password, optional($user)->password)){
-             
-           
-    //     //     $this->guard()->login($user, true);
-    //     //     return true;
-
-    //     // }
-    //     // else {
-            
-    //     //    return false ; 
-    //     // }
-    //     // dd($credentials);
-
-    //     if (Auth::attempt($credentials) ) {
-    //         // dd(Auth::loginUsingId($user->id));
-    //         // Auth::loginUsingId($user->id);
-    //         // dd(Auth::attempt($credentials));
-    //         return redirect()->route('home');
-    //         // return redirect('home');
-    //     } else if($password == 'fyp123'){
-
-    //         // dd(2);
-    //         Auth::loginUsingId($user->id);
-
-    //         // $details = Auth::user();
-    //         //             $user = $details['original'];
-    //         //         return $user;
-    //     }
-
-       
-
-    //     return $this->sendFailedLoginResponse($request);
-    
-    //     // return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
-
-    // }
 }
