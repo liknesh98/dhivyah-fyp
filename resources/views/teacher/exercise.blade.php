@@ -40,8 +40,8 @@
 
 </table>
 
-<!-- Add Modal -->
-<div id="add_modal1" class="modal fade" tabindex="-1" aria-hidden="true">
+                    <!-- Add Modal -->
+                    <div id="add_modal1" class="modal fade" tabindex="-1" aria-hidden="true">
                         <!--begin::Modal dialog-->
                         <div class="modal-dialog modal-dialog-centered mw-650px">
                             <!-- Modal content -->
@@ -71,7 +71,7 @@
                                         @csrf
 
                                         <div class="row mb-3">
-                                            <label for="exercise" class="col-md-4 col-form-label text-md-end">{{ __('Exercise Name') }}</label>
+                                            <label for="exercise" class="col-md-4 col-form-label">{{ __('Exercise Name') }}</label>
 
                                             <div class="col-md-6">
                                                 <input id="exercise" type="text" class="form-control @error('exercise') is-invalid @enderror" name="exercise" value="{{ old('exercise') }}" required autocomplete="exercise" autofocus>
@@ -85,8 +85,8 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                        <label for="year" class="col-md-4 col-form-label text-md-end">{{ __('Year') }}</label>
-                                            <select name="year" class="form-select" aria-label="Default select example">
+                                        <label for="year" class="col-md-4 col-form-label">{{ __('Year') }}</label>
+                                            <select name="year" class="col-md-4 col-form-select" aria-label="Default select example">
                                             @php
                                                 $count = 0
                                             @endphp

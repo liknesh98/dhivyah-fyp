@@ -67,11 +67,11 @@ Route::get('/teacher/exercise',[ManageStudyMaterialController::class, 'exercise'
 Route::get('/teacher/result',[ManageStudyMaterialController::class, 'result'])->name('/teacher/result');
 Route::post('/teacher/exercise_store',[ManageStudyMaterialController::class, 'exercise_store'])->name('exercise_store');
 Route::get('/teacher/exercise_delete/{exercise_id}', [ManageStudyMaterialController::class, 'exercise_delete'])->name('teacher/exercise_delete');
-Route::get('/teacher/notes/{id}', [ManageStudyMaterialController::class , 'getNotes']);
 Route::get('/teacher/video',[ManageStudyMaterialController::class, 'videos'])->name('videos');
 Route::post('/teacher/video/save',[ManageStudyMaterialController::class, 'video_store'])->name('videosStore');
 Route::get('/student/videos/delete/{id}',[ManageStudyMaterialController::class, 'delete_video'])->name('deleteVid');
 Route::get('/teacher/note',[ManageStudyMaterialController::class, 'notes'])->name('notes');
+Route::get('/teacher/notes/{id}', [ManageStudyMaterialController::class , 'getNotes']);
 Route::post('/teacher/note_store', [ManageStudyMaterialController::class, 'store_notes'])->name('note_store');
 Route::get('/teacher/note_delete/{id}', [ManageStudyMaterialController::class, 'notes_delete'])->name('note_delete');
 

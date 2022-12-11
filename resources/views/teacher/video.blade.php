@@ -12,9 +12,9 @@
     <th></th>
     <th></th>
     <th></th>
- 
-    
-    
+
+
+
 
   </tr>
 <tr>
@@ -26,8 +26,8 @@
   @if(!empty($videos))
     @foreach($videos as $video)
   <tr>
-  
-   
+
+
     <td>{{$video->videoId}}</td>
     <td>{{$video->videoName}}</td>
     <td>{{$video->year}}</td>
@@ -43,7 +43,7 @@
     @endif
     </td>
   </tr>
-  
+
 </table>
 
  <!-- Modal -->
@@ -56,7 +56,7 @@
       </div>
       <form method="POST" action="{{ route('videosStore') }}" enctype="multipart/form-data">
       @csrf
-     
+
         <label>Video Name:</label><input id="name" name="name" type="text" class="form-control" placeholder="name"  aria-label="name" aria-describedby="basic-addon2"></br>
         <label>Subject Name:</label><select id="subjname"  name ="subjname"class="form-select" aria-label="Default select example">
                                         <option selected>Select subject</option>
@@ -70,7 +70,7 @@
                                         <option value="{{$year->id}}">{{$year->year}}</option>
                                         @endforeach
                                       </select>
-       
+
         <label>Upload:</label><input id="file" name="file" type="file" class="form-control" placeholder="file" aria-label="file" aria-describedby="basic-addon5"></br>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
