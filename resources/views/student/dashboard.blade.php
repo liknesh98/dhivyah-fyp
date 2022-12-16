@@ -5,9 +5,10 @@
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">{{$announcement->name}}</h4></br>
   @if($announcement->img_path != null)
-  <img src="{{url($announcement->img_path)}}" alt="Image"/></br>
+  <img style="width:400px; height:300px;"src="{{url($announcement->img_path)}}" alt="Image"/></br>
   @endif
-  <p>{{$announcement->desc}}</p>
+  <br>
+  <h5>{{$announcement->desc}}</h5>
   <hr>
 
 </div>

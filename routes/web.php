@@ -55,7 +55,9 @@ Route::get('/student/study/{year}/{subject}', [StudyMaterialController::class , 
 Route::get('/student/notes/{id}', [StudyMaterialController::class , 'getNotes']);
 Route::post('/calculate_result', [StudyMaterialController::class, 'calculate_result'])->name('calculate_result');
 Route::get('/student/videos/{id}', [StudyMaterialController::class, 'video'])->name('video');
-
+Route::get('/student/help', function () {
+    return view('student.help');
+});
 
 
 // Teacher

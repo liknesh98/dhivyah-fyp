@@ -52,7 +52,6 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
-                <a href="#" class="nav-item nav-link">FAQ</a>
                 <a href="{{ url('/payment') }}" class="nav-item nav-link">Buy Now</a>
                 <a href="{{ url('/contact') }}" class="nav-item nav-link">Contact</a>
             </div>

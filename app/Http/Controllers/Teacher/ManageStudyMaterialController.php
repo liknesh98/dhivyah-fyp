@@ -232,6 +232,7 @@ class ManageStudyMaterialController extends Controller
         Exercise::create(array(
             'name' => $request->post('exercise'),
             'year_id'  => $request->post('year'),
+            'subject_id'  => 1,
         ));
 
         return redirect()->route('/teacher/exercise')->with('success','Exercise has been created successfully.');

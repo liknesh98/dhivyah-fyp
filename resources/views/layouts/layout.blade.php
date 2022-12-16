@@ -177,22 +177,16 @@
 
                             </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ route('s_announcement') }}">
                                 <span data-feather="layers"></span>
                                 Announcement
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/student/help">
                                 <span data-feather="shopping-cart"></span>
                                 Help
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                FAQ
                             </a>
                         </li>
                     </ul>

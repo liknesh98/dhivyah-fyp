@@ -32,7 +32,7 @@
     <td> {{$announcement->name}}</td>
     <td> {{$announcement->desc}}</td>
     @if (isset($announcement->img_path))
-    <td> <img src="{{url($announcement->img_path)}}" alt="Image"/></td>
+    <td> <img style="width:250px; height:250px;" src="{{url($announcement->img_path)}}" alt="Image"/></td>
     @else 
     <td>NOT AVAILABLE</td>
     @endif

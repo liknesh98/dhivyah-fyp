@@ -12,7 +12,9 @@
                     <div class="row">
                         <div class="col">
                             <div class="card" style="width: 18rem;">
+                                    @if (isset($question->file_name))
                                     <img src="{{url($question->file_name)}}" class="card-img-top" alt="No image">
+                                    @endif
                                     <div class="card-body">
                                     <h5 class="card-title">Question: </h5>
                                     <br>

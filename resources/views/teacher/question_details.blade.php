@@ -6,7 +6,14 @@
   <div class="row">
     <div class="col">
     <div class="card" style="width: 18rem;">
-            <img src="{{url($question->file_name)}}" class="card-img-top" alt="No image">
+              @php
+                if($question->file_name != null){ // you can check your condition here.
+                $quest_img = url($question->file_name);
+                }else{
+                $quest_img = "";
+                }
+              @endphp
+            <img src="{{$quest_img}}" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">Question: {{$question->quest_name}}</h5>
               @foreach ($answers as $answer)
